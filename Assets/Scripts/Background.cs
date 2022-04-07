@@ -24,14 +24,21 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //move
+        Move();
+        Scroll();
+    }
+
+    void Move()
+    {
         curPos = transform.position;
         nextPos = Vector3.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
-
-        if(Sprites[startIdx].position.x < camWidth * (-1))
+    }
+    void Scroll()
+    {
+        if (Sprites[startIdx].position.x < camWidth * (-1))
         {
-            //startSpritePos = Sprites[startIdx].localPosition;
+            //Reuse Sprite
             endSpritePos = Sprites[endIdx].localPosition;
             Sprites[startIdx].transform.localPosition = endSpritePos + Vector3.right * camWidth;
 
