@@ -24,11 +24,11 @@ public class FoodController : MonoBehaviour
         //Set initial sprite
         switch (gameObject.name)
         {
-            case "Food_egg":
+            case "Food_egg(Clone)":
                 InitSprite("Sprites/food_egg");
                 lastSprite = 2;
                 break;
-            case "Food_chicken":
+            case "Food_chicken(Clone)":
                 InitSprite("Sprites/food_chicken");
                 lastSprite = 1;
                 break;
@@ -44,32 +44,41 @@ public class FoodController : MonoBehaviour
     private void OnMouseDown()
     {
         //Cook food
-        if (spriteNum != lastSprite)
+        if (spriteNum < lastSprite)
         {
             spriteNum += 1;
             SpriteRend.sprite = SpriteList[spriteNum];
         }
 
     }
+    private void InactivateFood()
+    {
+        gameObject.SetActive(false);
+        spriteNum = 0;
+        SpriteRend.sprite = SpriteList[0];
+        gameObject.transform.position =
+                new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            if (spriteNum == lastSprite)
+            if (spriteNum == lastSprite) //Cook success
             {
-                gameObject.SetActive(false);
                 GameManager.score += 1;
+                InactivateFood();
             }
-            else
+            else //Cook failure
             {
-                gameObject.SetActive(false);
                 GameManager.score -= 1;
+                InactivateFood();
             }
 
         }
         else if (collision.gameObject.name == "Zone_foodEnd")
         {
-            gameObject.SetActive(false);
+            InactivateFood();
         }
     }
 
