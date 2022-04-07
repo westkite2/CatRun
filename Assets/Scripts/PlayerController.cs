@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float jumpPower;
+
     private int jumpCnt;
     private Rigidbody2D Rigid;
     

@@ -6,7 +6,7 @@ public class FoodController : MonoBehaviour
 {
     private SpriteRenderer SpriteRend;
     private Sprite[] SpriteList;
-
+    private GameManager GameManager;
     private int lastSprite;
     private int spriteNum;
 
@@ -18,8 +18,9 @@ public class FoodController : MonoBehaviour
     void Awake()
     {
         spriteNum = 0;
-
         SpriteRend = gameObject.GetComponent<SpriteRenderer>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         //Set initial sprite
         switch (gameObject.name)
         {
@@ -33,20 +34,43 @@ public class FoodController : MonoBehaviour
                 break;
         }
     }
-    
+
+    private void Update()
+    {
+        //Move towards the player
+        transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+    }
+
     private void OnMouseDown()
     {
+        //Cook food
         if (spriteNum != lastSprite)
         {
             spriteNum += 1;
             SpriteRend.sprite = SpriteList[spriteNum];
         }
-        else
-        {
-            Debug.Log("Already Last");
-        }
 
-        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            if (spriteNum == lastSprite)
+            {
+                gameObject.SetActive(false);
+                GameManager.score += 1;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                GameManager.score -= 1;
+            }
+
+        }
+        else if (collision.gameObject.name == "Zone_foodEnd")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 }
