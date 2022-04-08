@@ -11,27 +11,31 @@ public class Background : MonoBehaviour
 
     private int tmpIdx;
     private float camWidth;
-    private Vector3 curPos;
-    private Vector3 nextPos;
-    private Vector3 startSpritePos;
-    private Vector3 endSpritePos;
+    private Vector2 curPos;
+    private Vector2 nextPos;
+    private Vector2 endSpritePos;
+    private GameManager GameManager;
 
     private void Awake()
     {
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Scroll();
+        if (!GameManager.flag_backStop)
+        {
+            Move();
+            Scroll();
+        }
     }
 
     void Move()
     {
         curPos = transform.position;
-        nextPos = Vector3.left * speed * Time.deltaTime;
+        nextPos = Vector2.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
     }
     void Scroll()
@@ -40,7 +44,7 @@ public class Background : MonoBehaviour
         {
             //Reuse Sprite
             endSpritePos = Sprites[endIdx].localPosition;
-            Sprites[startIdx].transform.localPosition = endSpritePos + Vector3.right * camWidth;
+            Sprites[startIdx].transform.localPosition = endSpritePos + Vector2.right * camWidth;
 
             //Update Sprite Index            
             tmpIdx = endIdx;

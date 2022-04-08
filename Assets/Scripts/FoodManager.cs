@@ -16,6 +16,8 @@ public class FoodManager : MonoBehaviour
     private int idxEgg = 0;
     private int idxChicken = 0;
 
+    private GameManager GameManager;
+
     void CreateObjects(GameObject Food, ref GameObject[] FoodList, int num)
     {
         //Create food objects on awake for object pooling
@@ -43,15 +45,32 @@ public class FoodManager : MonoBehaviour
         StartCoroutine("ActivateFood");
 
     }
+    private void DeactivateFood(ref GameObject[] FoodList, int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            FoodList[i].SetActive(false);
+        }
+    }
     private void Awake()
     {
         CreateObjects(Egg, ref EggList, numEgg);
         CreateObjects(Chicken, ref ChickenList, numChicken);
-        
-        Physics.IgnoreLayerCollision(3, 3);
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Physics2D.IgnoreLayerCollision(3, 3);
     }
     private void Start()
     {
         StartCoroutine("ActivateFood");
+    }
+    private void Update()
+    {
+        if (GameManager.flag_gameClear)
+        {
+            //Clear all foods
+            StopCoroutine("ActivateFood");
+            DeactivateFood(ref EggList, numEgg);
+            DeactivateFood(ref ChickenList, numChicken);
+        }
     }
 }

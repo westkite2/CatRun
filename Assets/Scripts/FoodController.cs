@@ -38,7 +38,7 @@ public class FoodController : MonoBehaviour
     private void Update()
     {
         //Move towards the player
-        transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+        transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
     }
 
     private void OnMouseDown()
