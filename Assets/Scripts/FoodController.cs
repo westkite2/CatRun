@@ -7,6 +7,7 @@ public class FoodController : MonoBehaviour
     private SpriteRenderer SpriteRend;
     private Sprite[] SpriteList;
     private GameManager GameManager;
+    private Animator Anim_Explosion;
     private int lastSprite;
     private int spriteNum;
 
@@ -20,6 +21,7 @@ public class FoodController : MonoBehaviour
         spriteNum = 0;
         SpriteRend = gameObject.GetComponent<SpriteRenderer>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        Anim_Explosion = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         //Set initial sprite
         switch (gameObject.name)
@@ -35,19 +37,20 @@ public class FoodController : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         //Move towards the player
         transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
     }
 
-    private void OnMouseDown()
+    void OnMouseDown()
     {
         //Cook food
         if (spriteNum < lastSprite)
         {
             spriteNum += 1;
             SpriteRend.sprite = SpriteList[spriteNum];
+            Anim_Explosion.SetTrigger("Explode");
         }
 
     }
