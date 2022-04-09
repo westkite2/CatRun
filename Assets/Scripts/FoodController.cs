@@ -25,11 +25,11 @@ public class FoodController : MonoBehaviour
         switch (gameObject.name)
         {
             case "Food_egg(Clone)":
-                InitSprite("Sprites/food_egg");
+                InitSprite("Sprites/Foods/food_egg");
                 lastSprite = 2;
                 break;
             case "Food_chicken(Clone)":
-                InitSprite("Sprites/food_chicken");
+                InitSprite("Sprites/Foods/food_chicken");
                 lastSprite = 1;
                 break;
         }

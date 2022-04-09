@@ -16,7 +16,7 @@ public class Background : MonoBehaviour
     private Vector2 endSpritePos;
     private GameManager GameManager;
 
-    private void Awake()
+    void Awake()
     {
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -27,6 +27,7 @@ public class Background : MonoBehaviour
     {
         if (!GameManager.flag_backStop)
         {
+            //Background movement
             Move();
             Scroll();
         }
@@ -34,6 +35,7 @@ public class Background : MonoBehaviour
 
     void Move()
     {
+        //Background moves to the left
         curPos = transform.position;
         nextPos = Vector2.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
