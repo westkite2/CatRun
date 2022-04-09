@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int score;
+    public float score;
     public bool flag_gameClear;
     public bool flag_backStop;
-    public Text UI_Score;
+    public Image Hp_fill;
+    public TextMeshProUGUI UI_Score;
 
-    private static int CLEARSCORE = 3;
+    private static int CLEARSCORE = 10;
     private GameObject SignBoard;
 
-    private void Awake()
+    void Awake()
     {
-        score = 0;
+        score = 1;
         flag_gameClear = false;
         flag_backStop = false;
 
@@ -32,8 +35,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Display score
-        UI_Score.text = score.ToString();
-
+        UI_Score.text = (Math.Truncate(score * 10) / 10).ToString();
+        Hp_fill.fillAmount = score / 10;
+        
         if (score >= CLEARSCORE && !flag_gameClear)
         {
             //Game clear flag up

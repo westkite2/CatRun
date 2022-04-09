@@ -7,6 +7,8 @@ public class FoodController : MonoBehaviour
     private SpriteRenderer SpriteRend;
     private Sprite[] SpriteList;
     private GameManager GameManager;
+    private GameObject Explosion;
+    private SpriteRenderer SpriteRend_Explosion;
     private Animator Anim_Explosion;
     private int lastSprite;
     private int spriteNum;
@@ -21,7 +23,9 @@ public class FoodController : MonoBehaviour
         spriteNum = 0;
         SpriteRend = gameObject.GetComponent<SpriteRenderer>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Anim_Explosion = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        Explosion = gameObject.transform.GetChild(0).gameObject;
+        SpriteRend_Explosion = Explosion.GetComponent<SpriteRenderer>();
+        Anim_Explosion = Explosion.GetComponent<Animator>();
 
         //Set initial sprite
         switch (gameObject.name)
@@ -54,27 +58,29 @@ public class FoodController : MonoBehaviour
         }
 
     }
-    private void InactivateFood()
+    void InactivateFood()
     {
         gameObject.SetActive(false);
+        Anim_Explosion.ResetTrigger("Explode");
         spriteNum = 0;
         SpriteRend.sprite = SpriteList[0];
+        SpriteRend_Explosion.sprite = null;
         gameObject.transform.position =
                 new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
             if (spriteNum == lastSprite) //Cook success
             {
-                GameManager.score += 1;
+                GameManager.score += 0.1f;
                 InactivateFood();
             }
             else //Cook failure
             {
-                GameManager.score -= 1;
+                GameManager.score -= 0.1f;
                 InactivateFood();
             }
 
