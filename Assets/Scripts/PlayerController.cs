@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
     public float jumpPower;
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Sprite Sprite_JumpButtonUp;
     public Sprite Sprite_JumpButtonDown;
 
+    private ButtonManager ButtonManager;
     private int jumpCnt;
     private Rigidbody2D Rigid;
     private Animator Anim;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         Anim = gameObject.GetComponent<Animator>();
         JumpImage = JumpButton.GetComponent<Image>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        ButtonManager = GameManager.GetComponent<ButtonManager>();
     }
 
     void Update()
@@ -90,6 +93,8 @@ public class PlayerController : MonoBehaviour
         {
             //Player exits the scene
             this.gameObject.SetActive(false);
+            //Exit Game
+            ButtonManager.OnClickGoMainButton();
         }
     }
 }

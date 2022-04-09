@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -12,23 +13,25 @@ public class GameManager : MonoBehaviour
     public bool flag_backStop;
     public Image Hp_fill;
     public TextMeshProUGUI UI_Score;
-
+    public GameObject GameClear;
     private static int CLEARSCORE = 10;
     private GameObject SignBoard;
 
     void Awake()
     {
-        score = 1;
+        score = 1f;
         flag_gameClear = false;
         flag_backStop = false;
 
         SignBoard = GameObject.Find("Environment").transform.GetChild(3).gameObject;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {        
         SignBoard.SetActive(false);
+        GameClear.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             //Game clear flag up
             flag_gameClear = true;
+            GameClear.SetActive(true);
         }
         if (flag_gameClear && !flag_backStop)
         {
