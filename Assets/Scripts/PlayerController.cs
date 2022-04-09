@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public Sprite Sprite_JumpButtonUp;
     public Sprite Sprite_JumpButtonDown;
 
-    private ButtonManager ButtonManager;
     private int jumpCnt;
     private Rigidbody2D Rigid;
     private Animator Anim;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         JumpImage.sprite = Sprite_JumpButtonUp;
     }
 
-    void JumpButtonDown()
+    private void JumpButtonDown()
     {
         JumpImage.sprite = Sprite_JumpButtonDown;
     }
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         //Player jumps
         if (jumpCnt < 2)
         {
+            GameManager.PlaySound("JUMP");
             jumpCnt += 1; 
             Anim.SetBool("isJump", true);
             Rigid.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Walk()
+    private void Walk()
     {
         //Walk towards the signboard on Game clear
         Vector2 position = transform.position;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
-    void Awake()
+    private void Awake()
     {
         jumpCnt = 0;
 
@@ -55,10 +56,9 @@ public class PlayerController : MonoBehaviour
         Anim = gameObject.GetComponent<Animator>();
         JumpImage = JumpButton.GetComponent<Image>();
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ButtonManager = GameManager.GetComponent<ButtonManager>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -80,8 +80,8 @@ public class PlayerController : MonoBehaviour
             Walk();
         }
     }
-    
-    void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.name == "Zone_floor")
         {
@@ -94,7 +94,8 @@ public class PlayerController : MonoBehaviour
             //Player exits the scene
             this.gameObject.SetActive(false);
             //Exit Game
-            ButtonManager.OnClickGoMainButton();
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainScene");
         }
     }
 }

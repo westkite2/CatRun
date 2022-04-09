@@ -6,33 +6,38 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject PauseUI;
-
+    AudioSource Audiosource;
+    public AudioClip sfx_buttonClick;
+    private void Awake()
+    {
+        this.Audiosource = GetComponent<AudioSource>();
+    }
     private void Start()
     {
         PauseUI.SetActive(false);
     }
     public void OnClickStartButton()
     {
-        //Audiosource.PlayOneShot(AC_click);
+        Audiosource.PlayOneShot(sfx_buttonClick);
         Time.timeScale = 1f;
         SceneManager.LoadScene("NightCity");
     }
     public void OnClickGoMainButton()
     {
-        //Audiosource.PlayOneShot(AC_click);
+        Audiosource.PlayOneShot(sfx_buttonClick);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
 
     public void OnClickPauseButton()
     {
-        //Audiosource.PlayOneShot(AC_click);
+        Audiosource.PlayOneShot(sfx_buttonClick);
         Time.timeScale = 0f;
         PauseUI.SetActive(true);
     }
     public void OnClickKeepPlayingButton()
     {
-        //Audiosource.PlayOneShot(AC_click);
+        Audiosource.PlayOneShot(sfx_buttonClick);
         PauseUI.SetActive(false);
         Time.timeScale = 1f;
     }

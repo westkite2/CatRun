@@ -47,18 +47,19 @@ public class FoodController : MonoBehaviour
         transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
     }
 
-    void OnMouseDown()
+    private void OnMouseDown()
     {
         //Cook food
         if (spriteNum < lastSprite)
         {
             spriteNum += 1;
+            GameManager.PlaySound("COOK");
             SpriteRend.sprite = SpriteList[spriteNum];
             Anim_Explosion.SetTrigger("Explode");
         }
 
     }
-    void InactivateFood()
+    private void InactivateFood()
     {
         gameObject.SetActive(false);
         Anim_Explosion.ResetTrigger("Explode");
@@ -76,11 +77,13 @@ public class FoodController : MonoBehaviour
             if (spriteNum == lastSprite) //Cook success
             {
                 GameManager.score += 0.1f;
+                GameManager.PlaySound("EAT");
                 InactivateFood();
             }
             else //Cook failure
             {
                 GameManager.score -= 0.1f;
+                GameManager.PlaySound("DAMAGE");
                 InactivateFood();
             }
 

@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    private AudioSource Audiosource;
+    private AudioSource Bgm;
+    public AudioClip SFX_jump;
+    public AudioClip SFX_cook;
+    public AudioClip SFX_damage;
+    public AudioClip SFX_eat;
+    public AudioClip SFX_gameClear;
+    public AudioClip SFX_gameOver;
+
     public float score;
     public bool flag_gameClear;
     public bool flag_backStop;
@@ -24,7 +32,8 @@ public class GameManager : MonoBehaviour
         flag_backStop = false;
 
         SignBoard = GameObject.Find("Environment").transform.GetChild(3).gameObject;
-
+        Audiosource = GetComponent<AudioSource>();
+        Bgm = GameObject.Find("Main Camera").GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -44,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (score >= CLEARSCORE && !flag_gameClear)
         {
             //Game clear flag up
+            PlaySound("GAMECLEAR");
             flag_gameClear = true;
             GameClear.SetActive(true);
         }
@@ -58,6 +68,35 @@ public class GameManager : MonoBehaviour
                 flag_backStop = true;
             }
         }
+    }
+    public void PlaySound(string command)
+    {
+        switch (command)
+        {
+            case "JUMP":
+                Audiosource.PlayOneShot(SFX_jump);
+                break;
+            case "COOK":
+                Audiosource.PlayOneShot(SFX_cook);
+                break;
+            case "EAT":
+                Audiosource.PlayOneShot(SFX_eat);
+                break;
+            case "DAMAGE":
+                Audiosource.PlayOneShot(SFX_damage);
+                break;
+            case "GAMEOVER":
+                Audiosource.PlayOneShot(SFX_gameOver);
+                break;
+            case "GAMECLEAR":
+                Audiosource.PlayOneShot(SFX_gameClear);
+                break;
 
+        }
+    }
+
+    public void ADMIN_changeScore()
+    {
+        score = 9.5f;
     }
 }
