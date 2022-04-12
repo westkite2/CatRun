@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private static int CLEARSCORE = 10;
     private GameObject SignBoard;
 
-    void Awake()
+    private void Awake()
     {
         score = 1f;
         flag_gameClear = false;
@@ -37,14 +37,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {        
         SignBoard.SetActive(false);
         GameClear.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Display score
         UI_Score.text = (Math.Truncate(score * 10) / 10).ToString();

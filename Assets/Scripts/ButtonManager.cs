@@ -16,6 +16,18 @@ public class ButtonManager : MonoBehaviour
     {
         PauseUI.SetActive(false);
     }
+
+    public void OnClickExitButton()
+    {
+        Audiosource.PlayOneShot(sfx_buttonClick);
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
     public void OnClickStartButton()
     {
         Audiosource.PlayOneShot(sfx_buttonClick);
@@ -41,4 +53,5 @@ public class ButtonManager : MonoBehaviour
         PauseUI.SetActive(false);
         Time.timeScale = 1f;
     }
+
 }

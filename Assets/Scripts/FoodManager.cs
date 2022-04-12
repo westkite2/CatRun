@@ -18,7 +18,7 @@ public class FoodManager : MonoBehaviour
 
     private GameManager GameManager;
 
-    void CreateObjects(GameObject Food, ref GameObject[] FoodList, int num)
+    private void CreateObjects(GameObject Food, ref GameObject[] FoodList, int num)
     {
         //Create food objects on awake for object pooling
         FoodList = new GameObject[num];

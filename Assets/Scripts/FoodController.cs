@@ -13,12 +13,12 @@ public class FoodController : MonoBehaviour
     private int lastSprite;
     private int spriteNum;
 
-    void InitSprite(string Address)
+    private void InitSprite(string Address)
     {
         SpriteList = Resources.LoadAll<Sprite>(Address);
         SpriteRend.sprite = SpriteList[0];
     }
-    void Awake()
+    private void Awake()
     {
         spriteNum = 0;
         SpriteRend = gameObject.GetComponent<SpriteRenderer>();
@@ -41,7 +41,7 @@ public class FoodController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         //Move towards the player
         transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
@@ -70,7 +70,7 @@ public class FoodController : MonoBehaviour
                 new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player")
         {

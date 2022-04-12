@@ -16,14 +16,14 @@ public class Background : MonoBehaviour
     private Vector2 endSpritePos;
     private GameManager GameManager;
 
-    void Awake()
+    private void Awake()
     {
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
         GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!GameManager.flag_backStop)
         {
@@ -33,14 +33,14 @@ public class Background : MonoBehaviour
         }
     }
 
-    void Move()
+    private void Move()
     {
         //Background moves to the left
         curPos = transform.position;
         nextPos = Vector2.left * speed * Time.deltaTime;
         transform.position = curPos + nextPos;
     }
-    void Scroll()
+    private void Scroll()
     {
         if (Sprites[startIdx].position.x < camWidth * (-1))
         {
