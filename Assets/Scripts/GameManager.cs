@@ -7,96 +7,103 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private AudioSource Audiosource;
-    private AudioSource Bgm;
-    public AudioClip SFX_jump;
-    public AudioClip SFX_cook;
-    public AudioClip SFX_damage;
-    public AudioClip SFX_eat;
-    public AudioClip SFX_gameClear;
-    public AudioClip SFX_gameOver;
+    //Summary: Manage game score and audio
 
-    public float score;
-    public bool flag_gameClear;
-    public bool flag_backStop;
-    public Image Hp_fill;
-    public TextMeshProUGUI UI_Score;
-    public GameObject GameClear;
-    private static int CLEARSCORE = 10;
-    private GameObject SignBoard;
+    //For audio
+    private AudioSource audioSource;
+    private AudioSource bgmGameScene;
+    public GameObject mainCamera;
+    public AudioClip sfxJump;
+    public AudioClip sfxCook;
+    public AudioClip sfxDamage;
+    public AudioClip sfxEat;
+    public AudioClip sfxGameClear;
+    public AudioClip sfxGameOver;
+
+    //For game clear
+    private static int GameClearScore = 10;
+    public bool isGameClear;
+    public bool isBackgroundStop;
+    public float currentScore;
+    public GameObject objSignBoard;
+    public Image imgHpFill;
+    public TextMeshProUGUI txtScore;
+    public GameObject objGameClear;
+    
+
 
     private void Awake()
     {
-        score = 1f;
-        flag_gameClear = false;
-        flag_backStop = false;
-
-        SignBoard = GameObject.Find("Environment").transform.GetChild(3).gameObject;
-        Audiosource = GetComponent<AudioSource>();
-        Bgm = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        //Initialize variables
+        currentScore = 1f;
+        isGameClear = false;
+        isBackgroundStop = false;
     }
 
-    // Start is called before the first frame update
     private void Start()
-    {        
-        SignBoard.SetActive(false);
-        GameClear.SetActive(false);
+    {
+        objSignBoard.SetActive(false);
+        objGameClear.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        bgmGameScene = mainCamera.GetComponent<AudioSource>();
+
     }
 
-    // Update is called once per frame
     private void Update()
     {
         //Display score
-        UI_Score.text = (Math.Truncate(score * 10) / 10).ToString();
-        Hp_fill.fillAmount = score / 10;
-        
-        if (score >= CLEARSCORE && !flag_gameClear)
-        {
-            //Game clear flag up
+        txtScore.text = (Math.Truncate(currentScore * 10) / 10).ToString();
+        imgHpFill.fillAmount = currentScore / 10;
+
+        //Show game clear on clear
+        if (!isGameClear && currentScore >= GameClearScore )
+        {            
             PlaySound("GAMECLEAR");
-            flag_gameClear = true;
-            GameClear.SetActive(true);
+            isGameClear = true;
+            objGameClear.SetActive(true);
         }
-        if (flag_gameClear && !flag_backStop)
+
+        //Show signboard on game clear
+        if (isGameClear && !isBackgroundStop)
         {
-            //Sign board appears
-            SignBoard.SetActive(true);
-            SignBoard.transform.position += Vector3.left * 4 * Time.deltaTime;
-            if (SignBoard.transform.localPosition.x <= 6)
+            objSignBoard.SetActive(true);
+            objSignBoard.transform.position += Vector3.left * 4 * Time.deltaTime;
+            //Stop background movement when signboard is on the right position
+            if (objSignBoard.transform.localPosition.x <= 6)
             {
-                //Stop background movement
-                flag_backStop = true;
+                isBackgroundStop = true;
             }
         }
     }
-    public void PlaySound(string command)
+    public void PlaySound(string soundName)
     {
-        switch (command)
+        //Play sfx once
+        switch (soundName)
         {
             case "JUMP":
-                Audiosource.PlayOneShot(SFX_jump);
+                audioSource.PlayOneShot(sfxJump);
                 break;
             case "COOK":
-                Audiosource.PlayOneShot(SFX_cook);
+                audioSource.PlayOneShot(sfxCook);
                 break;
             case "EAT":
-                Audiosource.PlayOneShot(SFX_eat);
+                audioSource.PlayOneShot(sfxEat);
                 break;
             case "DAMAGE":
-                Audiosource.PlayOneShot(SFX_damage);
+                audioSource.PlayOneShot(sfxDamage);
                 break;
             case "GAMEOVER":
-                Audiosource.PlayOneShot(SFX_gameOver);
+                audioSource.PlayOneShot(sfxGameOver);
                 break;
             case "GAMECLEAR":
-                Audiosource.PlayOneShot(SFX_gameClear);
+                audioSource.PlayOneShot(sfxGameClear);
                 break;
-
         }
     }
 
-    public void ADMIN_changeScore()
+    public void AdminChangeCurrentScore()
     {
-        score = 9.5f;
+        //Change current score to see game clear
+        currentScore = 9.8f;
     }
 }

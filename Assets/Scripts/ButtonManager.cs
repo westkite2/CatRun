@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public GameObject PauseUI;
-    AudioSource Audiosource;
-    public AudioClip sfx_buttonClick;
-    private void Awake()
-    {
-        this.Audiosource = GetComponent<AudioSource>();
-    }
+    //Summary: Manage UI buttons
+
+    private AudioSource audioSource;
+    public AudioClip sfxButtonClick;
+    public GameObject objPauseWindow;
+
     private void Start()
     {
-        PauseUI.SetActive(false);
+        objPauseWindow.SetActive(false);
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     public void OnClickExitButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
+        audioSource.PlayOneShot(sfxButtonClick);
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -30,27 +30,29 @@ public class ButtonManager : MonoBehaviour
 
     public void OnClickStartButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
+        audioSource.PlayOneShot(sfxButtonClick);
         Time.timeScale = 1f;
         SceneManager.LoadScene("NightCity");
     }
+
     public void OnClickGoMainButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
+        audioSource.PlayOneShot(sfxButtonClick);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainScene");
     }
 
     public void OnClickPauseButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
+        audioSource.PlayOneShot(sfxButtonClick);
         Time.timeScale = 0f;
-        PauseUI.SetActive(true);
+        objPauseWindow.SetActive(true);
     }
+
     public void OnClickKeepPlayingButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
-        PauseUI.SetActive(false);
+        audioSource.PlayOneShot(sfxButtonClick);
+        objPauseWindow.SetActive(false);
         Time.timeScale = 1f;
     }
 

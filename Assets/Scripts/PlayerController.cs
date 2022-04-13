@@ -6,43 +6,46 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float jumpPower;
-    public GameObject JumpButton;
-    public Sprite Sprite_JumpButtonUp;
-    public Sprite Sprite_JumpButtonDown;
+    //Summary: Manage player actions - jumping and jump button, walking and exiting on game clear 
 
-    private int jumpCnt;
-    private Rigidbody2D Rigid;
-    private Animator Anim;
-    private GameManager GameManager;
-    private Image JumpImage;
-    
+    private int jumpCount;
+    private Rigidbody2D rigidbodyPlayer;
+    private Animator animatorPlayer;
+    private Image imgJumpButton;
+    public float jumpPower;
+    public GameManager GameManager;
+    public GameObject objJumpButton;
+    public Sprite spriteJumpButtonUp;
+    public Sprite spriteJumpButtonDown;
+
     public void JumpButtonUp()
     {
-        JumpImage.sprite = Sprite_JumpButtonUp;
+        //Set jump button image to normal
+        imgJumpButton.sprite = spriteJumpButtonUp;
     }
 
     private void JumpButtonDown()
     {
-        JumpImage.sprite = Sprite_JumpButtonDown;
+        //Set jump button image to pressed
+        imgJumpButton.sprite = spriteJumpButtonDown;
     }
 
     public void Jump()
     {
         //Player jumps
-        if (jumpCnt < 2)
+        if (jumpCount < 2)
         {
+            jumpCount += 1;
+            animatorPlayer.SetBool("isJump", true);
+            rigidbodyPlayer.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
             GameManager.PlaySound("JUMP");
-            jumpCnt += 1; 
-            Anim.SetBool("isJump", true);
-            Rigid.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
             JumpButtonDown();
         }
     }
 
     private void Walk()
     {
-        //Walk towards the signboard on Game clear
+        //Player walks towards the signboard on Game clear
         Vector2 position = transform.position;
         position.x = position.x + 3.0f * Time.deltaTime;
         transform.position = position;
@@ -50,32 +53,31 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        jumpCnt = 0;
-
-        Rigid = gameObject.GetComponent<Rigidbody2D>();
-        Anim = gameObject.GetComponent<Animator>();
-        JumpImage = JumpButton.GetComponent<Image>();
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        jumpCount = 0;
+        rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
+        animatorPlayer = gameObject.GetComponent<Animator>();
+        imgJumpButton = objJumpButton.GetComponent<Image>();
+        
     }
 
     private void Update()
     {
+        //This is for PC jump test
         if (Input.GetButtonDown("Jump"))
         {
-            //This is for PC jump test
             Jump();
         }
-        if (Input.GetButtonUp("Jump"))
+        else if (Input.GetButtonUp("Jump"))
         {
-            //This is for PC jump test
             JumpButtonUp();
         }
-
-        if (GameManager.flag_gameClear)
+        //Inactivate jump button on game end
+        if (GameManager.isGameClear)
         {
-            JumpButton.SetActive(false);
+            objJumpButton.SetActive(false);
         }
-        if (GameManager.flag_backStop)
+        //Player walk to the signboard on game end
+        if (GameManager.isBackgroundStop)
         {
             Walk();
         }
@@ -83,17 +85,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Zone_floor")
+        //Stop jumping animation when player touch floor
+        if (collision.gameObject.name == "Zone_floor")
         {
-            //Stop jumping animation when touch floor
-            jumpCnt = 0;
-            Anim.SetBool("isJump", false);
+            jumpCount = 0;
+            animatorPlayer.SetBool("isJump", false);
         }
+
+        ///Exit game when player reach signboard
         if(collision.gameObject.name == "Signboard")
         {
-            //Player exits the scene
             this.gameObject.SetActive(false);
-            //Exit Game
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainScene");
         }

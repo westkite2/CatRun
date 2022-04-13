@@ -5,16 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneManager : MonoBehaviour
 {
-    AudioSource Audiosource;
-    public AudioClip sfx_buttonClick;
+    // Summary: Manage Main Scene buttons
+
+    private AudioSource audioSource;
+    public AudioClip sfxButtonClick;
+
     private void Awake()
     {
-        this.Audiosource = GetComponent<AudioSource>();
+        this.audioSource = GetComponent<AudioSource>();
     }
+
+    public void OnClickStartButton()
+    {
+        // Start game
+        audioSource.PlayOneShot(sfxButtonClick);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("NightCity");
+    }
+
     public void OnClickExitButton()
     {
-        Audiosource.PlayOneShot(sfx_buttonClick);
-
+        // Exit program
+        audioSource.PlayOneShot(sfxButtonClick);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -22,10 +34,5 @@ public class MainSceneManager : MonoBehaviour
 #endif
     }
 
-    public void OnClickStartButton()
-    {
-        Audiosource.PlayOneShot(sfx_buttonClick);
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("NightCity");
-    }
+
 }

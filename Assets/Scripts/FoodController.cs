@@ -4,90 +4,98 @@ using UnityEngine;
 
 public class FoodController : MonoBehaviour
 {
-    private SpriteRenderer SpriteRend;
-    private Sprite[] SpriteList;
-    private GameManager GameManager;
-    private GameObject Explosion;
-    private SpriteRenderer SpriteRend_Explosion;
-    private Animator Anim_Explosion;
-    private int lastSprite;
-    private int spriteNum;
+    //Summary: Manage individual activated food - movement and player interactions
+
+    private int totalSprite;
+    private int spriteIndex;
+    private Sprite[] spriteListFood;
+    private SpriteRenderer spriteRendererFood;
+    public GameObject objExplosion;
+    private SpriteRenderer spriteRendererExplosion;
+    private Animator animatorExplosion;
+    public GameManager GameManager;
 
     private void InitSprite(string Address)
     {
-        SpriteList = Resources.LoadAll<Sprite>(Address);
-        SpriteRend.sprite = SpriteList[0];
+        //Set food sprite to initial state
+        spriteListFood = Resources.LoadAll<Sprite>(Address);
+        spriteRendererFood.sprite = spriteListFood[0];
     }
+
     private void Awake()
     {
-        spriteNum = 0;
-        SpriteRend = gameObject.GetComponent<SpriteRenderer>();
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Explosion = gameObject.transform.GetChild(0).gameObject;
-        SpriteRend_Explosion = Explosion.GetComponent<SpriteRenderer>();
-        Anim_Explosion = Explosion.GetComponent<Animator>();
-
+        spriteIndex = 0;
+        objExplosion = gameObject.transform.GetChild(0).gameObject;
+        spriteRendererFood = gameObject.GetComponent<SpriteRenderer>();
+        spriteRendererExplosion = objExplosion.GetComponent<SpriteRenderer>();
+        animatorExplosion = objExplosion.GetComponent<Animator>();
+        
         //Set initial sprite
         switch (gameObject.name)
         {
             case "Food_egg(Clone)":
                 InitSprite("Sprites/Foods/food_egg");
-                lastSprite = 2;
+                totalSprite = 2;
                 break;
             case "Food_chicken(Clone)":
                 InitSprite("Sprites/Foods/food_chicken");
-                lastSprite = 1;
+                totalSprite = 1;
                 break;
         }
     }
 
     private void Update()
     {
-        //Move towards the player
+        //Food move towards the player
         transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+    }
+
+    private void InactivateFood()
+    {
+        //Reset food variables
+        spriteIndex = 0;
+        spriteRendererFood.sprite = spriteListFood[0];
+        spriteRendererExplosion.sprite = null;
+        animatorExplosion.ResetTrigger("Explode");
+        gameObject.transform.position =
+                new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
+        gameObject.SetActive(false);
     }
 
     private void OnMouseDown()
     {
-        //Cook food
-        if (spriteNum < lastSprite)
+        //Cook food on click
+        if (spriteIndex < totalSprite)
         {
-            spriteNum += 1;
+            spriteIndex += 1;
             GameManager.PlaySound("COOK");
-            SpriteRend.sprite = SpriteList[spriteNum];
-            Anim_Explosion.SetTrigger("Explode");
+            spriteRendererFood.sprite = spriteListFood[spriteIndex];
+            animatorExplosion.SetTrigger("Explode");
         }
-
-    }
-    private void InactivateFood()
-    {
-        gameObject.SetActive(false);
-        Anim_Explosion.ResetTrigger("Explode");
-        spriteNum = 0;
-        SpriteRend.sprite = SpriteList[0];
-        SpriteRend_Explosion.sprite = null;
-        gameObject.transform.position =
-                new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //When player eats(touches) the food, update score
         if (collision.gameObject.name == "Player")
         {
-            if (spriteNum == lastSprite) //Cook success
+            //Increase score if food cook complete
+            if (spriteIndex == totalSprite)
             {
-                GameManager.score += 0.1f;
+                GameManager.currentScore += 0.1f;
                 GameManager.PlaySound("EAT");
                 InactivateFood();
             }
-            else //Cook failure
+            //Decrease score if food cook incomplete
+            else
             {
-                GameManager.score -= 0.1f;
+                GameManager.currentScore -= 0.1f;
                 GameManager.PlaySound("DAMAGE");
                 InactivateFood();
             }
 
         }
+        //If food not eaten and reach end of screen, inactivate food
         else if (collision.gameObject.name == "Zone_foodEnd")
         {
             InactivateFood();

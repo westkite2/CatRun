@@ -4,73 +4,75 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-    public GameObject Egg;
-    public GameObject Chicken;
+    //Summary: Create food objects in advance (object pooling), clear them when game ends
 
-    private GameObject[] EggList;
-    private GameObject[] ChickenList;
+    private GameObject[] objEggList;
+    private GameObject[] objChickenList;
+    public GameObject objEgg;
+    public GameObject objChicken;
+    public GameManager GameManager;
 
     private int numEgg = 10;
     private int numChicken = 10;
-
     private int idxEgg = 0;
     private int idxChicken = 0;
 
-    private GameManager GameManager;
-
-    private void CreateObjects(GameObject Food, ref GameObject[] FoodList, int num)
+    private void CreateObjects(GameObject objFood, ref GameObject[] objFoodList, int num)
     {
-        //Create food objects on awake for object pooling
-        FoodList = new GameObject[num];
+        //Create and store food objects
+        objFoodList = new GameObject[num];
         for (int i = 0; i < num; i++)
         {
-            GameObject FoodObject = Instantiate(Food);
+            GameObject FoodObject = Instantiate(objFood);
             FoodObject.transform.position =
                 new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
-            FoodList[i] = FoodObject;
+            objFoodList[i] = FoodObject;
             FoodObject.SetActive(false);
         }
     }
     IEnumerator ActivateFood()
     {
+        //Activate food objects periodically while game playing
         yield return new WaitForSeconds(1f);
-        EggList[idxEgg++].SetActive(true);
+        objEggList[idxEgg++].SetActive(true);
         if (idxEgg == numEgg) idxEgg = 0;
 
         yield return new WaitForSeconds(1f);
-        ChickenList[idxChicken++].SetActive(true);
+        objChickenList[idxChicken++].SetActive(true);
         if (idxChicken == numChicken) idxChicken = 0;
 
-
         StartCoroutine("ActivateFood");
-
     }
-    private void DeactivateFood(ref GameObject[] FoodList, int num)
+
+    private void InactivateFood(ref GameObject[] FoodList, int num)
     {
         for (int i = 0; i < num; i++)
         {
             FoodList[i].SetActive(false);
         }
     }
+
     private void Awake()
     {
-        CreateObjects(Egg, ref EggList, numEgg);
-        CreateObjects(Chicken, ref ChickenList, numChicken);
-        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Physics2D.IgnoreLayerCollision(3, 3);
+        //Create food objects
+        CreateObjects(objEgg, ref objEggList, numEgg);
+        CreateObjects(objChicken, ref objChickenList, numChicken);
     }
+
     private void Start()
     {
+        Physics2D.IgnoreLayerCollision(3, 3);
         StartCoroutine("ActivateFood");
     }
+
     private void Update()
     {
-        if (GameManager.flag_gameClear)
+        //Clear all foods on game clear
+        if (GameManager.isGameClear)
         {
-            //Clear all foods
             StopCoroutine("ActivateFood");
-            DeactivateFood(ref EggList, numEgg);
-            DeactivateFood(ref ChickenList, numChicken);
+            InactivateFood(ref objEggList, numEgg);
+            InactivateFood(ref objChickenList, numChicken);
         }
     }
 }
