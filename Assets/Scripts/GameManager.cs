@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     private AudioSource bgmGameScene;
     public GameObject mainCamera;
+    public Slider bgmVolumn;
+    public Slider sfxVolumn;
     public AudioClip sfxJump;
     public AudioClip sfxCook;
     public AudioClip sfxDamage;
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     {
         //Initialize variables
         currentScore = 1f;
+        bgmVolumn.value = 1f;
+        sfxVolumn.value = 1f;
         isGameClear = false;
         isBackgroundStop = false;
     }
@@ -46,11 +50,16 @@ public class GameManager : MonoBehaviour
         objGameClear.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         bgmGameScene = mainCamera.GetComponent<AudioSource>();
-
+        bgmGameScene.volume = bgmVolumn.value;
+        audioSource.volume = sfxVolumn.value;
     }
 
     private void Update()
     {
+        //Update audio volumn
+        bgmGameScene.volume = bgmVolumn.value;
+        audioSource.volume = sfxVolumn.value;
+
         //Display score
         txtScore.text = (Math.Truncate(currentScore * 10) / 10).ToString();
         imgHpFill.fillAmount = currentScore / 10;
