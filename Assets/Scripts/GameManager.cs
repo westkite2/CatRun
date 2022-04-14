@@ -6,14 +6,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    //Summary: Manage player hp display and audio
+    //Summary: Manage player hp and audio
 
     //For audio
-    private AudioSource audioSource;
-    private AudioSource bgmGameScene;
+    private AudioSource sfxAudioSource;
+    private AudioSource bgmAudioSource;
     public GameObject mainCamera;
-    public Slider bgmVolumn;
-    public Slider sfxVolumn;
+    public Slider bgmVolumnSlider;
+    public Slider sfxVolumnSlider;
     public AudioClip sfxJump;
     public AudioClip sfxCook;
     public AudioClip sfxDamage;
@@ -51,6 +51,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over!");
         }
     }
+    private void ControlAudioVolumn()
+    {
+        //Update audio volumn
+        bgmAudioSource.volume = bgmVolumnSlider.value;
+        sfxAudioSource.volume = sfxVolumnSlider.value;
+
+        //Save audio volumn
+        PlayerPrefs.SetFloat("bgmVolumn", bgmVolumnSlider.value);
+        PlayerPrefs.SetFloat("sfxVolumn", sfxVolumnSlider.value);
+    }
 
     private void DecreaseHp()
     {
@@ -61,14 +71,15 @@ public class GameManager : MonoBehaviour
             currentHp -= 0.01f;
         }
     }
+
     private void Awake()
     {
         //Initialize variables
         currentHp = 100f;
         nextHpDecreaseTime = 0.0f;
         hpDecreaseTimeGap = 0.01f;
-        bgmVolumn.value = 1f;
-        sfxVolumn.value = 1f;
+        bgmVolumnSlider.value = 1f;
+        sfxVolumnSlider.value = 1f;
         isGameEnd = false;
         isEndOfRoad = false;
         isGameSuccess = false;
@@ -78,18 +89,19 @@ public class GameManager : MonoBehaviour
     {
         objSignBoard.SetActive(false);
         objGameClear.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
-        bgmGameScene = mainCamera.GetComponent<AudioSource>();
+        sfxAudioSource = GetComponent<AudioSource>();
+        bgmAudioSource = mainCamera.GetComponent<AudioSource>();
         scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
-        bgmGameScene.volume = bgmVolumn.value;
-        audioSource.volume = sfxVolumn.value;
+
+        bgmVolumnSlider.value = PlayerPrefs.GetFloat("bgmVolumn", 1f);
+        sfxVolumnSlider.value = PlayerPrefs.GetFloat("sfxVolumn", 1f);
+        bgmAudioSource.volume = bgmVolumnSlider.value;
+        sfxAudioSource.volume = sfxVolumnSlider.value;
     }
 
     private void Update()
     {
-        //Update audio volumn
-        bgmGameScene.volume = bgmVolumn.value;
-        audioSource.volume = sfxVolumn.value;
+        ControlAudioVolumn();
 
         //Display hp
         txtHp.text = currentHp.ToString();
@@ -128,22 +140,22 @@ public class GameManager : MonoBehaviour
         switch (soundName)
         {
             case "JUMP":
-                audioSource.PlayOneShot(sfxJump);
+                sfxAudioSource.PlayOneShot(sfxJump);
                 break;
             case "COOK":
-                audioSource.PlayOneShot(sfxCook);
+                sfxAudioSource.PlayOneShot(sfxCook);
                 break;
             case "EAT":
-                audioSource.PlayOneShot(sfxEat);
+                sfxAudioSource.PlayOneShot(sfxEat);
                 break;
             case "DAMAGE":
-                audioSource.PlayOneShot(sfxDamage);
+                sfxAudioSource.PlayOneShot(sfxDamage);
                 break;
             case "GAMEOVER":
-                audioSource.PlayOneShot(sfxGameOver);
+                sfxAudioSource.PlayOneShot(sfxGameOver);
                 break;
             case "GAMECLEAR":
-                audioSource.PlayOneShot(sfxGameClear);
+                sfxAudioSource.PlayOneShot(sfxGameClear);
                 break;
         }
     }
