@@ -5,12 +5,14 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
     //Summary: Move(scroll) background image to make walking illusion
+
     private int tmpIdx;
     private float camWidth;
     private Vector2 curPos;
     private Vector2 nextPos;
     private Vector2 endSpritePos;
 
+    public int scrollCount;
     public int startIdx;
     public int endIdx;
     public float moveSpeed;
@@ -19,6 +21,7 @@ public class BackgroundController : MonoBehaviour
 
     private void Start()
     {
+        scrollCount = 48;
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
     }
 
@@ -26,7 +29,7 @@ public class BackgroundController : MonoBehaviour
     private void Update()
     {
         //Move Background
-        if (!GameManager.isBackgroundStop)
+        if (!GameManager.isGameEnd)
         {
             Move();
             Scroll();
@@ -48,6 +51,7 @@ public class BackgroundController : MonoBehaviour
             //Reuse Sprite
             endSpritePos = Sprites[endIdx].localPosition;
             Sprites[startIdx].transform.localPosition = endSpritePos + Vector2.right * camWidth;
+            scrollCount += 1;
 
             //Update Sprite Index            
             tmpIdx = endIdx;

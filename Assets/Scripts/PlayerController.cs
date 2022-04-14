@@ -70,14 +70,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonUp("Jump"))
         {
             JumpButtonUp();
-        }
+        }        
         //Inactivate jump button on game end
-        if (GameManager.isGameClear)
+        if (GameManager.isGameEnd)
         {
             objJumpButton.SetActive(false);
         }
         //Player walk to the signboard on game end
-        if (GameManager.isBackgroundStop)
+        if (GameManager.isEndOfRoad)
         {
             Walk();
         }
@@ -96,8 +96,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.name == "Signboard")
         {
             this.gameObject.SetActive(false);
-            Time.timeScale = 1f;
-            SceneManager.LoadScene("MainScene");
+            GameManager.ShowGameResult();
         }
     }
 }

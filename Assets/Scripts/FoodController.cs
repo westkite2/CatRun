@@ -76,20 +76,23 @@ public class FoodController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //When player eats(touches) the food, update score
+        //When player eats(touches) the food, update hp
         if (collision.gameObject.name == "Player")
         {
-            //Increase score if food cook complete
+            //Increase hp if food cook complete
             if (spriteIndex == totalSprite)
             {
-                GameManager.currentScore += 0.1f;
+                if (GameManager.currentHp < GameManager.maxHp)
+                {
+                    GameManager.currentHp += 1;
+                }
                 GameManager.PlaySound("EAT");
                 InactivateFood();
             }
-            //Decrease score if food cook incomplete
+            //Decrease hp if food cook incomplete
             else
             {
-                GameManager.currentScore -= 0.1f;
+                GameManager.currentHp -= 1;
                 GameManager.PlaySound("DAMAGE");
                 InactivateFood();
             }

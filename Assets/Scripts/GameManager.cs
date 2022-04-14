@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    //Summary: Manage game score and audio
+    //Summary: Manage player hp display and audio
 
     //For audio
     private AudioSource audioSource;
@@ -22,26 +21,57 @@ public class GameManager : MonoBehaviour
     public AudioClip sfxGameClear;
     public AudioClip sfxGameOver;
 
-    //For game clear
-    private static int GameClearScore = 10;
-    public bool isGameClear;
-    public bool isBackgroundStop;
-    public float currentScore;
+    //For game ending
+    private BackgroundController scriptBackgroundController;
+    private float nextHpDecreaseTime;
+    private float hpDecreaseTimeGap;
+    public static float maxHp = 100f;
+    public bool isGameEnd;
+    public bool isEndOfRoad;
+    public bool isGameSuccess;
+    public float currentHp;
+    public GameObject objBackRoad;
     public GameObject objSignBoard;
     public Image imgHpFill;
-    public TextMeshProUGUI txtScore;
+    public TextMeshProUGUI txtHp;
     public GameObject objGameClear;
-    
 
+    public void ShowGameResult()
+    {
+        //Show game clear on success
+        if (isGameSuccess)
+        {
+            Debug.Log("Game Clear!");
+            //PlaySound("GAMECLEAR");
+            objGameClear.SetActive(true);
+        }
+        //Show game over on fail
+        else
+        {
+            Debug.Log("Game Over!");
+        }
+    }
 
+    private void DecreaseHp()
+    {
+        //Decrease hp continuously
+        if (Time.time > nextHpDecreaseTime)
+        {
+            nextHpDecreaseTime = Time.time + hpDecreaseTimeGap;
+            currentHp -= 0.01f;
+        }
+    }
     private void Awake()
     {
         //Initialize variables
-        currentScore = 1f;
+        currentHp = 100f;
+        nextHpDecreaseTime = 0.0f;
+        hpDecreaseTimeGap = 0.01f;
         bgmVolumn.value = 1f;
         sfxVolumn.value = 1f;
-        isGameClear = false;
-        isBackgroundStop = false;
+        isGameEnd = false;
+        isEndOfRoad = false;
+        isGameSuccess = false;
     }
 
     private void Start()
@@ -50,6 +80,7 @@ public class GameManager : MonoBehaviour
         objGameClear.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         bgmGameScene = mainCamera.GetComponent<AudioSource>();
+        scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
         bgmGameScene.volume = bgmVolumn.value;
         audioSource.volume = sfxVolumn.value;
     }
@@ -60,30 +91,37 @@ public class GameManager : MonoBehaviour
         bgmGameScene.volume = bgmVolumn.value;
         audioSource.volume = sfxVolumn.value;
 
-        //Display score
-        txtScore.text = (Math.Truncate(currentScore * 10) / 10).ToString();
-        imgHpFill.fillAmount = currentScore / 10;
+        //Display hp
+        txtHp.text = currentHp.ToString();
+        imgHpFill.fillAmount = (currentHp / maxHp);
 
-        //Show game clear on clear
-        if (!isGameClear && currentScore >= GameClearScore )
-        {            
-            PlaySound("GAMECLEAR");
-            isGameClear = true;
-            objGameClear.SetActive(true);
-        }
-
-        //Show signboard on game clear
-        if (isGameClear && !isBackgroundStop)
+        if (!isGameEnd)
         {
-            objSignBoard.SetActive(true);
-            objSignBoard.transform.position += Vector3.left * 4 * Time.deltaTime;
-            //Stop background movement when signboard is on the right position
-            if (objSignBoard.transform.localPosition.x <= 6)
+            DecreaseHp();
+            
+            //Game over if zero hp
+            if (currentHp <= 0)
             {
-                isBackgroundStop = true;
+                isGameEnd = true;
+                ShowGameResult();
+            }
+
+            //Show signboard(end point) if game end is near
+            if (scriptBackgroundController.scrollCount == 49)
+            {
+                objSignBoard.SetActive(true);
+                objSignBoard.transform.position += Vector3.left * 4 * Time.deltaTime;
+            }
+
+            //End game if player walked enough distance
+            if (scriptBackgroundController.scrollCount == 50)
+            {
+                isGameEnd = true;
+                isEndOfRoad = true;
             }
         }
     }
+
     public void PlaySound(string soundName)
     {
         //Play sfx once
@@ -112,7 +150,6 @@ public class GameManager : MonoBehaviour
 
     public void AdminChangeCurrentScore()
     {
-        //Change current score to see game clear
-        currentScore = 9.8f;
+        //Admin option
     }
 }

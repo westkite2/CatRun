@@ -30,6 +30,7 @@ public class FoodManager : MonoBehaviour
             FoodObject.SetActive(false);
         }
     }
+
     IEnumerator ActivateFood()
     {
         //Activate food objects periodically while game playing
@@ -68,7 +69,7 @@ public class FoodManager : MonoBehaviour
     private void Update()
     {
         //Clear all foods on game clear
-        if (GameManager.isGameClear)
+        if (GameManager.isGameEnd)
         {
             StopCoroutine("ActivateFood");
             InactivateFood(ref objEggList, numEgg);
