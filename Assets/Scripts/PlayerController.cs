@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //Summary: Manage player actions - jumping and jump button, walking and exiting on game clear 
+    //Summary: Control player actions - jumping and jump button, walking and exiting on game clear 
 
     private int jumpCount;
     private Rigidbody2D rigidbodyPlayer;

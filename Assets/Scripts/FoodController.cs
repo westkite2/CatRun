@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FoodController : MonoBehaviour
 {
-    //Summary: Manage individual activated food - movement and player interactions
+    //Summary: Control individual activated food - movement and player interactions
 
     private int totalSprite;
     private int spriteIndex;

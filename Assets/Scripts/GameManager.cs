@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,7 +32,6 @@ public class GameManager : MonoBehaviour
     public GameObject objBackRoad;
     public GameObject objSignBoard;
     public Image imgHpFill;
-    public TextMeshProUGUI txtHp;
     public GameObject objGameClear;
 
     public void ShowGameResult()
@@ -104,7 +102,6 @@ public class GameManager : MonoBehaviour
         ControlAudioVolumn();
 
         //Display hp
-        txtHp.text = currentHp.ToString();
         imgHpFill.fillAmount = (currentHp / maxHp);
 
         if (!isGameEnd)
