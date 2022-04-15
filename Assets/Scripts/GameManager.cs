@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     public Image imgHpFill;
     public GameObject objGameClear;
 
+    //Special modes
+    public bool isSeaMode;
+
     public void ShowGameResult()
     {
         //Show game clear on success
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
         //Decrease hp continuously
         if (Time.time > nextHpDecreaseTime)
         {
-            nextHpDecreaseTime = Time.time + hpDecreaseTimeGap;
+            nextHpDecreaseTime = Time.time + hpDecreaseTimeGap;            
             currentHp -= 0.01f;
         }
     }
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
         isGameEnd = false;
         isEndOfRoad = false;
         isGameSuccess = false;
+        isSeaMode = false;
     }
 
     private void Start()

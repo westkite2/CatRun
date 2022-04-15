@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     //Summary: Control player actions - jumping and jump button, walking and exiting on game clear 
 
     private int jumpCount;
+    private bool isEnterSeaMode;
+    private Vector3 initialPosition;
     private Rigidbody2D rigidbodyPlayer;
     private Animator animatorPlayer;
     private Image imgJumpButton;
@@ -54,6 +56,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         jumpCount = 0;
+        isEnterSeaMode = false;
+        initialPosition = transform.position;
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
         animatorPlayer = gameObject.GetComponent<Animator>();
         imgJumpButton = objJumpButton.GetComponent<Image>();
@@ -81,6 +85,12 @@ public class PlayerController : MonoBehaviour
         {
             Walk();
         }
+        if (GameManager.isSeaMode && !isEnterSeaMode)
+        {
+            transform.position = new Vector3(8f, -20f, 0f);
+            rigidbodyPlayer.gravityScale = 0.1f;
+            isEnterSeaMode = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -92,11 +102,20 @@ public class PlayerController : MonoBehaviour
             animatorPlayer.SetBool("isJump", false);
         }
 
-        ///Exit game when player reach signboard
+        //Exit game when player reach signboard
         if(collision.gameObject.name == "Signboard")
         {
             this.gameObject.SetActive(false);
             GameManager.ShowGameResult();
+        }
+        
+        //Return to city mode from sea mode if touch ladder
+        if(collision.gameObject.name == "Ladder")
+        {
+            GameManager.isSeaMode = false;
+            isEnterSeaMode = false;
+            rigidbodyPlayer.gravityScale = 3f;
+            transform.position = initialPosition;
         }
     }
 }

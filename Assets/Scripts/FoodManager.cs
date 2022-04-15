@@ -35,12 +35,18 @@ public class FoodManager : MonoBehaviour
     {
         //Activate food objects periodically while game playing
         yield return new WaitForSeconds(1f);
-        objEggList[idxEgg++].SetActive(true);
-        if (idxEgg == numEgg) idxEgg = 0;
+        if (!GameManager.isSeaMode)
+        {
+            objEggList[idxEgg++].SetActive(true);
+            if (idxEgg == numEgg) idxEgg = 0;
+        }
 
         yield return new WaitForSeconds(1f);
-        objChickenList[idxChicken++].SetActive(true);
-        if (idxChicken == numChicken) idxChicken = 0;
+        if (!GameManager.isSeaMode)
+        {
+            objChickenList[idxChicken++].SetActive(true);
+            if (idxChicken == numChicken) idxChicken = 0;
+        }
 
         StartCoroutine("ActivateFood");
     }

@@ -47,7 +47,10 @@ public class FoodController : MonoBehaviour
     private void Update()
     {
         //Food move towards the player
-        transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+        if (!GameManager.isSeaMode)
+        {
+            transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+        }
     }
 
     private void InactivateFood()

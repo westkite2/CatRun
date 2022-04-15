@@ -7,7 +7,7 @@ public class ItemController : MonoBehaviour
     //Summary: Manage items - hpIncrease, hpDecrease
 
     private string itemName;
-    private int itemType; //1: hp increase, 2: hp decrease
+    private int itemType;
     public GameManager GameManager;
 
     private void Awake()
@@ -19,11 +19,14 @@ public class ItemController : MonoBehaviour
     {
         switch (itemName)
         {
-            case "HpItem":
+            case "HpHeart":
                 itemType = 1;
                 break;
             case "BadFood":
                 itemType = 2;
+                break;
+            case "SeaItem":
+                itemType = 3;
                 break;
         }
     }
@@ -33,13 +36,15 @@ public class ItemController : MonoBehaviour
         //Item moves toward the player
         transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
     }
+
     private void InactivateItem()
     {
-        //Reset food variables
+        //Reset variables
         gameObject.transform.position =
                 new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
         gameObject.SetActive(false);
     }
+
     private void OnMouseDown()
     {
         //Increase hp if the case
@@ -92,9 +97,15 @@ public class ItemController : MonoBehaviour
                 GameManager.PlaySound("DAMAGE");
                 InactivateItem();
             }
-
+            //Enter sea mode
+            if(itemType == 3)
+            {
+                GameManager.isSeaMode = true;
+                GameManager.PlaySound("EAT");
+                InactivateItem();
+            }
         }
-        //If food not eaten and reach end of screen, inactivate food
+        //If not eaten and reach end of screen, inactivate item
         else if (collision.gameObject.name == "Zone_foodEnd")
         {
             InactivateItem();

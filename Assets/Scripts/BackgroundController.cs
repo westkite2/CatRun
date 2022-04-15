@@ -21,18 +21,22 @@ public class BackgroundController : MonoBehaviour
 
     private void Start()
     {
-        scrollCount = 48;
+        scrollCount = 30;
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
+        Debug.Log("scroll count: " + scrollCount);
         //Move Background
         if (!GameManager.isGameEnd)
         {
-            Move();
-            Scroll();
+            if (!GameManager.isSeaMode)
+            {
+                Move();
+                Scroll();
+            }
         }
     }
 
