@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
     public Slider bgmVolumnSlider;
     public Slider sfxVolumnSlider;
+    public AudioClip sfxButtonClick;
     public AudioClip sfxJump;
     public AudioClip sfxCook;
     public AudioClip sfxDamage;
@@ -39,11 +40,16 @@ public class GameManager : MonoBehaviour
     public GameObject objSea;
 
     //Special modes
+    private bool isIntro;
     private bool isStartCountingScroll;
     private int startScroll;
+    private int currentIntroIdx;
     public bool isSeaMode;
     public bool isCarMode;
     public bool isExitCarMode;
+    public GameObject objIntro;
+    public GameObject[] objIntroTextArr;
+    public Text objNextText;
 
     public void ShowGameResult()
     {
@@ -99,6 +105,56 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void onClickSkipIntro()
+    {
+        PlaySound("CLICK");
+        objIntro.SetActive(false);
+        bgmAudioSource.Play();
+        Time.timeScale = 1f;
+    }
+
+    public void onClickNextIntro()
+    {
+        PlaySound("CLICK");
+
+        if (currentIntroIdx < 8)
+        {
+            objIntroTextArr[currentIntroIdx].gameObject.SetActive(false);
+            currentIntroIdx += 1;
+            objIntroTextArr[currentIntroIdx].gameObject.SetActive(true);
+
+            //Change text if last page
+            if (currentIntroIdx == 8)
+            {
+                objNextText.text = "½ÃÀÛ!";
+            }
+        }
+        //Start game
+        else
+        {
+            objIntro.SetActive(false);
+            bgmAudioSource.Play();
+            Time.timeScale = 1f;
+        }
+
+    }
+
+    private void ShowIntro()
+    {
+        Time.timeScale = 0f;
+        bgmAudioSource.Pause();
+
+        //Inactivate all Text except first
+        for(int i = 1; i < 9; i++)
+        {
+            objIntroTextArr[i].gameObject.SetActive(false);
+        }
+        objIntroTextArr[0].gameObject.SetActive(true);
+        currentIntroIdx = 0;
+
+    }
+
     private void Awake()
     {
         //Initialize variables
@@ -116,6 +172,8 @@ public class GameManager : MonoBehaviour
         isCarMode = false;
         isStartCountingScroll = false;
         isExitCarMode = false;
+        isIntro = true;
+        objIntro.SetActive(true);
     }
 
     private void Start()
@@ -133,10 +191,17 @@ public class GameManager : MonoBehaviour
         bgmAudioSource.volume = bgmVolumnSlider.value;
         bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
+
+        //Show intro
+        if (isIntro)
+        {
+            ShowIntro();
+        }
     }
 
     private void Update()
     {
+
         ControlAudioVolumn();
 
         PlayBGM();
@@ -196,6 +261,9 @@ public class GameManager : MonoBehaviour
         //Play sfx once
         switch (soundName)
         {
+            case "CLICK":
+                sfxAudioSource.PlayOneShot(sfxButtonClick);
+                break;
             case "JUMP":
                 sfxAudioSource.PlayOneShot(sfxJump);
                 break;
