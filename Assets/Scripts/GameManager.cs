@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     //For audio
     private AudioSource sfxAudioSource;
     private AudioSource bgmAudioSource;
+    private AudioSource bgmSeaAudioSource;
+    public bool isEnterSeaMode;
+    public bool isExitSeaMode;
     public GameObject mainCamera;
     public Slider bgmVolumnSlider;
     public Slider sfxVolumnSlider;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject objSignBoard;
     public Image imgHpFill;
     public GameObject objGameClear;
+    public GameObject objSea;
 
     //Special modes
     public bool isSeaMode;
@@ -73,6 +77,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void PlayBGM()
+    {
+        if(bgmAudioSource != null)
+        {
+            if (isEnterSeaMode)
+            {
+                bgmAudioSource.Pause();
+                bgmSeaAudioSource.Play();
+                isEnterSeaMode = false;
+            }
+            if (isExitSeaMode){
+                bgmSeaAudioSource.Pause();
+                bgmAudioSource.Play();
+                isExitSeaMode = false;
+            }
+        }
+    }
     private void Awake()
     {
         //Initialize variables
@@ -85,14 +106,18 @@ public class GameManager : MonoBehaviour
         isEndOfRoad = false;
         isGameSuccess = false;
         isSeaMode = false;
+        isEnterSeaMode = false;
+        isExitSeaMode = false;
     }
 
     private void Start()
     {
+        objSea.SetActive(false);
         objSignBoard.SetActive(false);
         objGameClear.SetActive(false);
         sfxAudioSource = GetComponent<AudioSource>();
         bgmAudioSource = mainCamera.GetComponent<AudioSource>();
+        bgmSeaAudioSource = objSea.GetComponent<AudioSource>();
         scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
 
         bgmVolumnSlider.value = PlayerPrefs.GetFloat("bgmVolumn", 1f);
@@ -104,7 +129,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         ControlAudioVolumn();
-
+        PlayBGM();
         //Display hp
         imgHpFill.fillAmount = (currentHp / maxHp);
 
@@ -132,6 +157,7 @@ public class GameManager : MonoBehaviour
                 isGameEnd = true;
                 isEndOfRoad = true;
             }
+
         }
     }
 

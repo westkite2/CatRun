@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour
     
     private int jumpCount;
     private int swimSpeed;
-    private bool isEnterSeaMode;
     private Vector3 initialPosition;
     private Rigidbody2D rigidbodyPlayer;
     private Animator animatorPlayer;
     private Image imgJumpButton;
     private JoyStickController JoyStickController;
+    public bool isEnterSeaMode;
     public float jumpPower;
     public GameManager GameManager;
     public GameObject objJoyStick;
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         jumpCount = 0;
-        swimSpeed = 6;
+        swimSpeed = 8;
         isEnterSeaMode = false;
         initialPosition = transform.position;
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
@@ -99,13 +99,20 @@ public class PlayerController : MonoBehaviour
         {
             Walk();
         }
+        //When Player enters the sea
         if (GameManager.isSeaMode && !isEnterSeaMode)
         {
-            transform.position = new Vector3(8f, -20f, 0f);
-            rigidbodyPlayer.gravityScale = 0.1f;
-            isEnterSeaMode = true;
+            //Change Controller            
             objJumpButton.SetActive(false);
             objJoyStick.SetActive(true);
+
+            //Control Physics
+            transform.position = new Vector3(8f, -20f, 0f);
+            rigidbodyPlayer.gravityScale = 0f;
+            rigidbodyPlayer.velocity = new Vector3(1, 0, 0);
+
+            GameManager.isEnterSeaMode = true;
+            isEnterSeaMode = true;
         }
     }
     private void SeaModeMovement()
@@ -146,11 +153,13 @@ public class PlayerController : MonoBehaviour
         {
             rigidbodyPlayer.velocity = Vector3.zero;            
             GameManager.isSeaMode = false;
+            GameManager.isExitSeaMode = true;
             isEnterSeaMode = false;
             rigidbodyPlayer.gravityScale = 3f;
             transform.position = initialPosition;
             objJumpButton.SetActive(true);
             objJoyStick.SetActive(false);
+            GameManager.objSea.SetActive(false);
         }
     }
 }

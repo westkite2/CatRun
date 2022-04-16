@@ -28,13 +28,19 @@ public class ItemController : MonoBehaviour
             case "SeaItem":
                 itemType = 3;
                 break;
+            case "HpBottle":
+                itemType = 4;
+                break;
         }
     }
 
     void Update()
     {
         //Item moves toward the player
-        transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+        if(itemType != 4)
+        {
+            transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+        }
     }
 
     private void InactivateItem()
@@ -75,12 +81,12 @@ public class ItemController : MonoBehaviour
         //When player eats(touches) the item, update hp
         if (collision.gameObject.name == "Player")
         {
-            //Increase hp if the case
+            //Increase hp
             if(itemType == 1)
             {
-                if(GameManager.currentHp <= 80f)
+                if(GameManager.currentHp <= 95f)
                 {
-                    GameManager.currentHp += 20f;
+                    GameManager.currentHp += 5f;
                 }
                 else
                 {
@@ -90,7 +96,7 @@ public class ItemController : MonoBehaviour
                 InactivateItem();
             }
 
-            //Decrease hp if the case
+            //Decrease hp
             if(itemType == 2)
             {
                 GameManager.currentHp -= 10f;
@@ -101,8 +107,23 @@ public class ItemController : MonoBehaviour
             if(itemType == 3)
             {
                 GameManager.isSeaMode = true;
+                GameManager.objSea.SetActive(true);
                 GameManager.PlaySound("EAT");
                 InactivateItem();
+            }
+            //Increase hp
+            if (itemType == 4)
+            {
+                if (GameManager.currentHp <= 90f)
+                {
+                    GameManager.currentHp += 10f;
+                }
+                else
+                {
+                    GameManager.currentHp = 100f;
+                }
+                GameManager.PlaySound("EAT");
+                gameObject.SetActive(false);
             }
         }
         //If not eaten and reach end of screen, inactivate item
