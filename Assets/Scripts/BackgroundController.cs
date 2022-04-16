@@ -7,11 +7,12 @@ public class BackgroundController : MonoBehaviour
     //Summary: Move(scroll) background image to make walking illusion
 
     private int tmpIdx;
+    private int backType;
     private float camWidth;
     private Vector2 curPos;
     private Vector2 nextPos;
     private Vector2 endSpritePos;
-
+    private string objName;
     public int scrollCount;
     public int startIdx;
     public int endIdx;
@@ -23,6 +24,19 @@ public class BackgroundController : MonoBehaviour
     {
         scrollCount = 1;
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
+        objName = gameObject.name;
+
+        switch (objName)
+        {
+            case "Back_building":
+                backType = 1;
+                moveSpeed = 1;
+                break;
+            case "Back_road":
+                backType = 2;
+                moveSpeed = 4;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -34,12 +48,39 @@ public class BackgroundController : MonoBehaviour
         {
             if (!GameManager.isSeaMode)
             {
+                SetSpeed();
                 Move();
                 Scroll();
             }
         }
     }
 
+    private void SetSpeed()
+    {
+        //Speed up in car mode
+        if (GameManager.isCarMode)
+        {
+            if (backType == 1)
+            {
+                moveSpeed = 4;
+            }
+            else
+            {
+                moveSpeed = 16;
+            }
+        }
+        else
+        {
+            if (backType == 1)
+            {
+                moveSpeed = 1;
+            }
+            else
+            {
+                moveSpeed = 4;
+            }
+        }
+    }
     private void Move()
     {
         //Background moves to the left

@@ -31,6 +31,9 @@ public class ItemController : MonoBehaviour
             case "HpBottle":
                 itemType = 4;
                 break;
+            case "CarItem":
+                itemType = 5;
+                break;
         }
     }
 
@@ -122,6 +125,13 @@ public class ItemController : MonoBehaviour
                 {
                     GameManager.currentHp = 100f;
                 }
+                GameManager.PlaySound("EAT");
+                gameObject.SetActive(false);
+            }
+            //Enter car mode
+            if(itemType == 5)
+            {
+                GameManager.isCarMode = true;
                 GameManager.PlaySound("EAT");
                 gameObject.SetActive(false);
             }

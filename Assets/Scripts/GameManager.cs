@@ -39,7 +39,11 @@ public class GameManager : MonoBehaviour
     public GameObject objSea;
 
     //Special modes
+    private bool isStartCountingScroll;
+    private int startScroll;
     public bool isSeaMode;
+    public bool isCarMode;
+    public bool isExitCarMode;
 
     public void ShowGameResult()
     {
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         //Update audio volumn
         bgmAudioSource.volume = bgmVolumnSlider.value;
+        bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
 
         //Save audio volumn
@@ -108,6 +113,9 @@ public class GameManager : MonoBehaviour
         isSeaMode = false;
         isEnterSeaMode = false;
         isExitSeaMode = false;
+        isCarMode = false;
+        isStartCountingScroll = false;
+        isExitCarMode = false;
     }
 
     private void Start()
@@ -123,13 +131,16 @@ public class GameManager : MonoBehaviour
         bgmVolumnSlider.value = PlayerPrefs.GetFloat("bgmVolumn", 1f);
         sfxVolumnSlider.value = PlayerPrefs.GetFloat("sfxVolumn", 1f);
         bgmAudioSource.volume = bgmVolumnSlider.value;
+        bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
     }
 
     private void Update()
     {
         ControlAudioVolumn();
+
         PlayBGM();
+
         //Display hp
         imgHpFill.fillAmount = (currentHp / maxHp);
 
@@ -156,6 +167,25 @@ public class GameManager : MonoBehaviour
             {
                 isGameEnd = true;
                 isEndOfRoad = true;
+            }
+
+            //Car mode
+            if (isCarMode)
+            {
+                //Start Counting scroll
+                if (!isStartCountingScroll)
+                {
+                    startScroll = scriptBackgroundController.scrollCount;
+                    isStartCountingScroll = true;
+                }
+                //Stop Car mode
+                if (scriptBackgroundController.scrollCount - startScroll >= 10)
+                {
+                    isCarMode = false;
+                    isStartCountingScroll = false;
+                    isExitCarMode = true;
+                }
+
             }
 
         }

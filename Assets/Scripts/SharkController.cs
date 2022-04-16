@@ -5,6 +5,7 @@ using UnityEngine;
 public class SharkController : MonoBehaviour
 {
     //Summary: Control shark movement
+
     private bool isFlip;
     private int direction;
     private SpriteRenderer spriteRenderer;

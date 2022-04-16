@@ -8,6 +8,7 @@ public class FoodController : MonoBehaviour
 
     private int totalSprite;
     private int spriteIndex;
+    private int moveSpeed;
     private Sprite[] spriteListFood;
     private SpriteRenderer spriteRendererFood;
     public GameObject objExplosion;
@@ -22,6 +23,23 @@ public class FoodController : MonoBehaviour
         spriteRendererFood.sprite = spriteListFood[0];
     }
 
+    private void SetSpeed()
+    {
+        if (!GameManager.isCarMode)
+        {
+            moveSpeed = 4;
+        }
+        else
+        {
+            moveSpeed = 16;
+        }
+    }
+
+    private void CookForCarMode()
+    {
+        spriteIndex = totalSprite;
+        spriteRendererFood.sprite = spriteListFood[spriteIndex];
+    }
     private void Awake()
     {
         spriteIndex = 0;
@@ -43,13 +61,19 @@ public class FoodController : MonoBehaviour
                 break;
         }
     }
-
+    
     private void Update()
     {
         //Food move towards the player
         if (!GameManager.isSeaMode)
         {
-            transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+            SetSpeed();
+            transform.position = new Vector2(transform.position.x - moveSpeed * Time.deltaTime, transform.position.y);
+
+            if (GameManager.isCarMode)
+            {
+                CookForCarMode();
+            }
         }
     }
 
