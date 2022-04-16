@@ -21,7 +21,7 @@ public class BackgroundController : MonoBehaviour
 
     private void Start()
     {
-        scrollCount = 30;
+        scrollCount = 48;
         camWidth = 2 * Camera.main.orthographicSize * Camera.main.aspect;
     }
 

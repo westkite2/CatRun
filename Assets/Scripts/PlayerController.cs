@@ -6,16 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //Summary: Control player actions - jumping and jump button, walking and exiting on game clear 
-
+    //Summary: Control player actions - jumping and jump button, joystick, walking and exiting on game clear 
+    
     private int jumpCount;
+    private int swimSpeed;
     private bool isEnterSeaMode;
     private Vector3 initialPosition;
     private Rigidbody2D rigidbodyPlayer;
     private Animator animatorPlayer;
     private Image imgJumpButton;
+    private JoyStickController JoyStickController;
     public float jumpPower;
     public GameManager GameManager;
+    public GameObject objJoyStick;
     public GameObject objJumpButton;
     public Sprite spriteJumpButtonUp;
     public Sprite spriteJumpButtonDown;
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         jumpCount = 0;
+        swimSpeed = 6;
         isEnterSeaMode = false;
         initialPosition = transform.position;
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
@@ -64,12 +68,22 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        objJoyStick.SetActive(false);
+        JoyStickController = objJoyStick.transform.GetChild(0).GetComponent<JoyStickController>();
+    }
+
     private void Update()
     {
         //This is for PC jump test
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            if (!GameManager.isSeaMode)
+            {
+                Jump();
+            }
+
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -90,6 +104,24 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(8f, -20f, 0f);
             rigidbodyPlayer.gravityScale = 0.1f;
             isEnterSeaMode = true;
+            objJumpButton.SetActive(false);
+            objJoyStick.SetActive(true);
+        }
+    }
+    private void SeaModeMovement()
+    {
+        float x = JoyStickController.GetX();
+        float y = JoyStickController.GetY();
+        Vector3 swimDir = new Vector3(x, y, 0).normalized;
+        transform.Translate(swimDir * swimSpeed * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        //Player movement in sea mode
+        if (GameManager.isSeaMode)
+        {
+            SeaModeMovement();
         }
     }
 
@@ -112,10 +144,13 @@ public class PlayerController : MonoBehaviour
         //Return to city mode from sea mode if touch ladder
         if(collision.gameObject.name == "Ladder")
         {
+            rigidbodyPlayer.velocity = Vector3.zero;            
             GameManager.isSeaMode = false;
             isEnterSeaMode = false;
             rigidbodyPlayer.gravityScale = 3f;
             transform.position = initialPosition;
+            objJumpButton.SetActive(true);
+            objJoyStick.SetActive(false);
         }
     }
 }
