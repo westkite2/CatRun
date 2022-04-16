@@ -98,7 +98,6 @@ public class ItemController : MonoBehaviour
                 GameManager.PlaySound("EAT");
                 InactivateItem();
             }
-
             //Decrease hp
             if(itemType == 2)
             {

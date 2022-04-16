@@ -9,11 +9,12 @@ public class FoodController : MonoBehaviour
     private int totalSprite;
     private int spriteIndex;
     private int moveSpeed;
+    private int foodType;
     private Sprite[] spriteListFood;
     private SpriteRenderer spriteRendererFood;
-    public GameObject objExplosion;
     private SpriteRenderer spriteRendererExplosion;
     private Animator animatorExplosion;
+    public GameObject objExplosion;
     public GameManager GameManager;
 
     private void InitSprite(string Address)
@@ -40,6 +41,27 @@ public class FoodController : MonoBehaviour
         spriteIndex = totalSprite;
         spriteRendererFood.sprite = spriteListFood[spriteIndex];
     }
+
+    private void CollectFood()
+    {
+        switch(foodType){
+            case 0:
+                GameManager.countFood[0] += 1;
+                break;
+            case 1:
+                GameManager.countFood[1] += 1;
+                break;
+            case 2:
+                GameManager.countFood[2] += 1;
+                break;
+            case 3:
+                GameManager.countFood[3] += 1;
+                break;
+            case 4:
+                GameManager.countFood[4] += 1;
+                break;
+        }
+    }
     private void Awake()
     {
         spriteIndex = 0;
@@ -51,14 +73,33 @@ public class FoodController : MonoBehaviour
         //Set initial sprite
         switch (gameObject.name)
         {
-            case "Food_egg(Clone)":
-                InitSprite("Sprites/Foods/food_egg");
+            /*SUSHI
+            case "Salmon(Clone)":
+                foodType = 0;
+                InitSprite("Sprites/Foods/salmon");
+                totalSprite = ?;
+                break;
+            case "Shrimp(Clone)":
+                foodType = 1;
+                InitSprite("Sprites/Foods/shrimp");
+                totalSprite = ?;
+                break;
+            case "Tuna(Clone)":
+                foodType = 2;
+                InitSprite("Sprites/Foods/tuna");
+                totalSprite = ?;
+                break;*/
+            case "Egg(Clone)":
+                foodType = 3;
+                InitSprite("Sprites/Foods/egg");
                 totalSprite = 2;
                 break;
-            case "Food_chicken(Clone)":
-                InitSprite("Sprites/Foods/food_chicken");
-                totalSprite = 1;
+            /*case "FishEgg(Clone)":
+                foodType = 4;
+                InitSprite("Sprites/Foods/fishegg");
+                totalSprite = ?;
                 break;
+             */
         }
     }
     
@@ -106,20 +147,17 @@ public class FoodController : MonoBehaviour
         //When player eats(touches) the food, update hp
         if (collision.gameObject.name == "Player")
         {
-            //Increase hp if food cook complete
+            //Collect food if food cook complete
             if (spriteIndex == totalSprite)
             {
-                if (GameManager.currentHp < GameManager.maxHp)
-                {
-                    GameManager.currentHp += 1;
-                }
+                CollectFood();
                 GameManager.PlaySound("EAT");
                 InactivateFood();
             }
             //Decrease hp if food cook incomplete
             else
             {
-                GameManager.currentHp -= 1;
+                GameManager.currentHp -= 2;
                 GameManager.PlaySound("DAMAGE");
                 InactivateFood();
             }

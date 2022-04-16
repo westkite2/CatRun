@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7613980758371051941}
   - component: {fileID: 2885270801389329392}
   m_Layer: 3
-  m_Name: Food_egg
+  m_Name: Egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,4 +247,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877790b7327e363459a185018212021b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objExplosion: {fileID: 0}
   GameManager: {fileID: 0}

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject objCarMode;
     public GameObject objJoyStick;
     public GameObject objJumpButton;
+    public GameObject objHpBottles;
     public Sprite spriteJumpButtonUp;
     public Sprite spriteJumpButtonDown;
 
@@ -129,6 +130,12 @@ public class PlayerController : MonoBehaviour
             //Change animation
             animatorPlayer.SetBool("isSwim", true);
 
+            //Set hp bottles active
+            for (int i = 0; i < objHpBottles.transform.childCount; i++)
+            {
+                objHpBottles.transform.GetChild(i).gameObject.SetActive(true);
+            }
+
             GameManager.isEnterSeaMode = true;
             isEnterSeaMode = true;
         }
@@ -195,7 +202,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.name == "Signboard")
         {
             this.gameObject.SetActive(false);
-            GameManager.ShowGameResult();
+            GameManager.GetGameResult();
         }
         
         //Return to city mode from sea mode if touch ladder

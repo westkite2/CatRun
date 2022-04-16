@@ -30,16 +30,23 @@ public class SharkController : MonoBehaviour
         //Shark swims toward the wall
         transform.position = new Vector2(transform.position.x + speed * direction * Time.deltaTime, transform.position.y);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void TakeSomeFoods()
     {
-        if (collision.gameObject.name == "Wall")
+        //Take away foods from the player
+        for (int i = 0; i < 5; i++)
         {
-            ChangeDirection();
-        }
-        if (collision.gameObject.name == "Player")
-        {
-            GameManager.currentHp -= 30;
-            ChangeDirection();
+            if (GameManager.countFood[i] > 0)
+            {
+                if (GameManager.countFood[i] <= 5)
+                {
+                    GameManager.countFood[i] -= 1;
+                }
+                else
+                {
+                    GameManager.countFood[i] -= 3;
+                }
+            }
         }
     }
     private void ChangeDirection()
@@ -56,6 +63,18 @@ public class SharkController : MonoBehaviour
             isFlip = true;
             direction = -1;
         }
-
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Wall")
+        {
+            ChangeDirection();
+        }
+        if (collision.gameObject.name == "Player")
+        {
+            GameManager.currentHp -= 30;
+            TakeSomeFoods();
+            ChangeDirection();
+        }
     }
 }

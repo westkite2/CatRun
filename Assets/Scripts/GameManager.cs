@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     //Summary: Manage player hp and audio
 
+    //For Food collection
+    public int[] countFood;
+    public Text[] textFood;
+
     //For audio
     private AudioSource sfxAudioSource;
     private AudioSource bgmAudioSource;
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         //Show game clear on success
         if (isGameSuccess)
-        {
+        {            
             Debug.Log("Game Clear!");
             //PlaySound("GAMECLEAR");
             objGameClear.SetActive(true);
@@ -64,6 +68,30 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Game Over!");
+        }
+    }
+    public void GetGameResult()
+    {
+        if (currentHp > 0)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (countFood[i] < 10)
+                {
+                    isGameSuccess = false;
+                    break;
+                }
+                if (i == 4)
+                {
+                    isGameSuccess = true;
+                }
+            }
+            ShowGameResult();
+        }
+        else
+        {
+            isGameSuccess = false;
+            ShowGameResult();
         }
     }
     private void ControlAudioVolumn()
@@ -155,9 +183,26 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void DisplayFoodCount()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            textFood[i].text = countFood[i].ToString();
+        }
+    }
+
+    private void DisplayHp()
+    {
+        imgHpFill.fillAmount = (currentHp / maxHp);
+    }
+
     private void Awake()
     {
         //Initialize variables
+        for(int i=0; i<5; i++)
+        {
+            countFood[i] = 0;
+        }
         currentHp = 100f;
         nextHpDecreaseTime = 0.0f;
         hpDecreaseTimeGap = 0.01f;
@@ -191,7 +236,7 @@ public class GameManager : MonoBehaviour
         bgmAudioSource.volume = bgmVolumnSlider.value;
         bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
-
+        
         //Show intro
         if (isIntro)
         {
@@ -206,8 +251,9 @@ public class GameManager : MonoBehaviour
 
         PlayBGM();
 
-        //Display hp
-        imgHpFill.fillAmount = (currentHp / maxHp);
+        DisplayFoodCount();
+
+        DisplayHp();
 
         if (!isGameEnd)
         {
@@ -217,6 +263,7 @@ public class GameManager : MonoBehaviour
             if (currentHp <= 0)
             {
                 isGameEnd = true;
+                isGameSuccess = false;
                 ShowGameResult();
             }
 
@@ -231,7 +278,7 @@ public class GameManager : MonoBehaviour
             if (scriptBackgroundController.scrollCount == 50)
             {
                 isGameEnd = true;
-                isEndOfRoad = true;
+                isEndOfRoad = true;                
             }
 
             //Car mode
@@ -252,7 +299,6 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-
         }
     }
 

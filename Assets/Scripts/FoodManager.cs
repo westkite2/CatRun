@@ -6,16 +6,35 @@ public class FoodManager : MonoBehaviour
 {
     //Summary: Create food objects in advance (object pooling), clear them when game ends
 
+    /*SUSHI
+    private GameObject[] objSalmonList;
+    private GameObject[] objShrimpList;
+    private GameObject[] objTunaList;*/
     private GameObject[] objEggList;
-    private GameObject[] objChickenList;
-    public GameObject objEgg;
-    public GameObject objChicken;
+    //private GameObject[] objFishEggList;
+    
     public GameManager GameManager;
 
-    private int numEgg = 10;
-    private int numChicken = 10;
+    /*SUSHI
+    public GameObject objSalmon;
+    public GameObject objShrimp;
+    public GameObject objTuna; */
+    public GameObject objEgg;
+    //public GameObject objFishEgg;
+    
+    /*SUSHI
+    private int numSalmon = 8;
+    private int numShrimp = 8;
+    private int numTuna = 8;*/
+    private int numEgg = 8;
+    //private int numFishEgg = 8;
+    
+    /*SUSHI
+    private int idxSalmon = 0;
+    private int idxShrimp = 0;
+    private int idxTuna = 0;*/
     private int idxEgg = 0;
-    private int idxChicken = 0;
+    //private int idxFishEgg = 0;
 
     private void CreateObjects(GameObject objFood, ref GameObject[] objFoodList, int num)
     {
@@ -41,13 +60,6 @@ public class FoodManager : MonoBehaviour
             if (idxEgg == numEgg) idxEgg = 0;
         }
 
-        yield return new WaitForSeconds(1f);
-        if (!GameManager.isSeaMode)
-        {
-            objChickenList[idxChicken++].SetActive(true);
-            if (idxChicken == numChicken) idxChicken = 0;
-        }
-
         StartCoroutine("ActivateFood");
     }
 
@@ -62,8 +74,12 @@ public class FoodManager : MonoBehaviour
     private void Awake()
     {
         //Create food objects
+        /*SUSHI
+        CreateObjects(objSalmon, ref objSalmonList, numSalmon);
+        CreateObjects(objShrimp, ref objShrimpList, numShrimp);
+        CreateObjects(objTuna, ref objTunaList, numTuna);*/
         CreateObjects(objEgg, ref objEggList, numEgg);
-        CreateObjects(objChicken, ref objChickenList, numChicken);
+        //CreateObjects(objFishEgg, ref objFishEggList, numFishEgg);
     }
 
     private void Start()
@@ -78,8 +94,12 @@ public class FoodManager : MonoBehaviour
         if (GameManager.isGameEnd)
         {
             StopCoroutine("ActivateFood");
+            /*SUSHI
+            InactivateFood(ref objSalmonList, numSalmon);
+            InactivateFood(ref objShrimpList, numShrimp);
+            InactivateFood(ref objTunaList, numTuna);*/
             InactivateFood(ref objEggList, numEgg);
-            InactivateFood(ref objChickenList, numChicken);
+            //InactivateFood(ref objFishEggList, numFishEgg);
         }
     }
 }
