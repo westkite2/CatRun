@@ -65,14 +65,17 @@ public class GameManager : MonoBehaviour
     public GameObject[] objIntroTextArr;
     public GameObject objCarMode;
     public Text objNextText;
+    public ItemManager scriptItemManager;
 
     public void ShowGameResult()
     {
         objMainCanvas.SetActive(false);
+        objSignBoard.SetActive(false);
         //Show game clear on success
         if (isGameSuccess)
         {
             PlaySound("GAMECLEAR");
+            bgmAudioSource.Pause();
             objMainCanvas.SetActive(false);
             objGameClear.SetActive(true);
             isShowCatShark = true;
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
         else
         {
             PlaySound("GAMEOVER");
+            bgmAudioSource.Pause();
             objMainCanvas.SetActive(false);
             objGameOver.SetActive(true);
         }
@@ -249,6 +253,7 @@ public class GameManager : MonoBehaviour
         bgmSeaAudioSource = objSea.GetComponent<AudioSource>();
         scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
         CarModeAudioSource = objCarMode.GetComponent<AudioSource>();
+        scriptItemManager = gameObject.GetComponent<ItemManager>();
 
         bgmVolumnSlider.value = PlayerPrefs.GetFloat("bgmVolumn", 1f);
         sfxVolumnSlider.value = PlayerPrefs.GetFloat("sfxVolumn", 1f);
@@ -291,7 +296,7 @@ public class GameManager : MonoBehaviour
             if (scriptBackgroundController.scrollCount == 49)
             {
                 objSignBoard.SetActive(true);
-                objSignBoard.transform.position += Vector3.left * 6 * Time.deltaTime;
+                objSignBoard.transform.position += Vector3.left * 8 * Time.deltaTime;
             }
 
             //End game if player walked enough distance
@@ -357,9 +362,6 @@ public class GameManager : MonoBehaviour
             case "CARMODE":
                 sfxAudioSource.PlayOneShot(sfxCarStart);
                 break;
-            //case "COOKDONE":
-                //sfxAudioSource.PlayOneShot(sfxCompleteCooking);
-                //break;
             case "SHARKDAMAGE":
                 sfxAudioSource.PlayOneShot(sfxSharkAttack);
                 break;
@@ -370,5 +372,34 @@ public class GameManager : MonoBehaviour
                 sfxAudioSource.PlayOneShot(sfxFallToRiver);
                 break;
         }
+    }
+
+    public void AdminClear()
+    {
+        //Admin option
+        scriptBackgroundController.scrollCount = 48;
+        for (int i = 0; i < 5; i++)
+        {
+            countFood[i] = 30;
+        }
+    }
+    public void AdminFail()
+    {
+        //Admin option
+        scriptBackgroundController.scrollCount = 48;
+    }
+
+    public void CarModeOn()
+    {
+        //Admin option
+        scriptItemManager.DisableSpecialItems();
+        scriptItemManager.objCarItem.SetActive(true);
+    }
+
+    public void SeaModeOn()
+    {
+        //Admin option
+        scriptItemManager.DisableSpecialItems();
+        scriptItemManager.objSeaItem.SetActive(true);
     }
 }

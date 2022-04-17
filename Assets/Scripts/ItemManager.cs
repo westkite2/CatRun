@@ -24,7 +24,7 @@ public class ItemManager : MonoBehaviour
             new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
     }
 
-    private void DisableSpecialItems()
+    public void DisableSpecialItems()
     {
         if (objSeaItem.activeSelf)
         {
