@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private AudioSource sfxAudioSource;
     private AudioSource bgmAudioSource;
     private AudioSource bgmSeaAudioSource;
+    public AudioSource CarModeAudioSource;
     public bool isEnterSeaMode;
     public bool isExitSeaMode;
     public GameObject mainCamera;
@@ -27,6 +28,11 @@ public class GameManager : MonoBehaviour
     public AudioClip sfxEat;
     public AudioClip sfxGameClear;
     public AudioClip sfxGameOver;
+    public AudioClip sfxCarStart;
+    public AudioClip sfxCompleteCooking;
+    public AudioClip sfxSharkAttack;
+    public AudioClip sfxGetItem;
+    public AudioClip sfxFallToRiver;
 
     //For game ending
     private BackgroundController scriptBackgroundController;
@@ -57,6 +63,7 @@ public class GameManager : MonoBehaviour
     public bool isExitCarMode;
     public GameObject objIntro;
     public GameObject[] objIntroTextArr;
+    public GameObject objCarMode;
     public Text objNextText;
 
     public void ShowGameResult()
@@ -65,7 +72,7 @@ public class GameManager : MonoBehaviour
         //Show game clear on success
         if (isGameSuccess)
         {
-            //PlaySound("GAMECLEAR");
+            PlaySound("GAMECLEAR");
             objMainCanvas.SetActive(false);
             objGameClear.SetActive(true);
             isShowCatShark = true;
@@ -73,6 +80,7 @@ public class GameManager : MonoBehaviour
         //Show game over on fail
         else
         {
+            PlaySound("GAMEOVER");
             objMainCanvas.SetActive(false);
             objGameOver.SetActive(true);
         }
@@ -83,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                if (countFood[i] < 10)
+                if (countFood[i] < 30)
                 {
                     isGameSuccess = false;
                     break;
@@ -107,6 +115,7 @@ public class GameManager : MonoBehaviour
         bgmAudioSource.volume = bgmVolumnSlider.value;
         bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
+        CarModeAudioSource.volume = sfxVolumnSlider.value;
 
         //Save audio volumn
         PlayerPrefs.SetFloat("bgmVolumn", bgmVolumnSlider.value);
@@ -239,13 +248,15 @@ public class GameManager : MonoBehaviour
         bgmAudioSource = mainCamera.GetComponent<AudioSource>();
         bgmSeaAudioSource = objSea.GetComponent<AudioSource>();
         scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
+        CarModeAudioSource = objCarMode.GetComponent<AudioSource>();
 
         bgmVolumnSlider.value = PlayerPrefs.GetFloat("bgmVolumn", 1f);
         sfxVolumnSlider.value = PlayerPrefs.GetFloat("sfxVolumn", 1f);
         bgmAudioSource.volume = bgmVolumnSlider.value;
         bgmSeaAudioSource.volume = bgmVolumnSlider.value;
         sfxAudioSource.volume = sfxVolumnSlider.value;
-        
+        CarModeAudioSource.volume = sfxVolumnSlider.value;
+
         //Show intro
         if (isIntro)
         {
@@ -302,6 +313,7 @@ public class GameManager : MonoBehaviour
                 //Stop Car mode
                 if (scriptBackgroundController.scrollCount - startScroll >= 10)
                 {
+                    CarModeAudioSource.Pause();
                     isCarMode = false;
                     isStartCountingScroll = false;
                     isExitCarMode = true;
@@ -342,7 +354,21 @@ public class GameManager : MonoBehaviour
             case "GAMECLEAR":
                 sfxAudioSource.PlayOneShot(sfxGameClear);
                 break;
+            case "CARMODE":
+                sfxAudioSource.PlayOneShot(sfxCarStart);
+                break;
+            //case "COOKDONE":
+                //sfxAudioSource.PlayOneShot(sfxCompleteCooking);
+                //break;
+            case "SHARKDAMAGE":
+                sfxAudioSource.PlayOneShot(sfxSharkAttack);
+                break;
+            case "GETITEM":
+                sfxAudioSource.PlayOneShot(sfxGetItem);
+                break;
+            case "SEAMODE":
+                sfxAudioSource.PlayOneShot(sfxFallToRiver);
+                break;
         }
     }
-
 }

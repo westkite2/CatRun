@@ -146,8 +146,9 @@ public class FoodController : MonoBehaviour
             spriteIndex += 1;
             GameManager.PlaySound("COOK");
             spriteRendererFood.sprite = spriteListFood[spriteIndex];
-            animatorExplosion.SetTrigger("Explode");
 
+            //cook animation
+            animatorExplosion.SetTrigger("Explode");
             if(spriteIndex == totalSprite)
             {
                 animatorComplete.SetTrigger("Complete");

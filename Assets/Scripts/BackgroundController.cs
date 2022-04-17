@@ -62,22 +62,22 @@ public class BackgroundController : MonoBehaviour
         {
             if (backType == 1)
             {
-                moveSpeed = 6;
+                moveSpeed = 8;
             }
             else
             {
-                moveSpeed = 18;
+                moveSpeed = 22;
             }
         }
         else
         {
             if (backType == 1)
             {
-                moveSpeed = 2;
+                moveSpeed = 3;
             }
             else
             {
-                moveSpeed = 6;
+                moveSpeed = 8;
             }
         }
     }

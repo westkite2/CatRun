@@ -72,6 +72,7 @@ public class SharkController : MonoBehaviour
         }
         if (collision.gameObject.name == "Player")
         {
+            GameManager.PlaySound("SHARKDAMAGE");
             GameManager.currentHp -= 30;
             TakeSomeFoods();
             ChangeDirection();

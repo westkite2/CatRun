@@ -47,11 +47,11 @@ public class ItemController : MonoBehaviour
             {
                 if(itemType == 1 || itemType == 2)
                 {
-                    itemSpeed = 6;
+                    itemSpeed = 8;
                 }
                 else
                 {
-                    itemSpeed = 8;
+                    itemSpeed = 7;
                 }
 
             }
@@ -76,6 +76,7 @@ public class ItemController : MonoBehaviour
         //Increase hp if the case
         if (itemType == 1)
         {
+            GameManager.PlaySound("GETITEM");
             if (GameManager.currentHp <= 80f)
             {
                 GameManager.currentHp += 20f;
@@ -84,7 +85,6 @@ public class ItemController : MonoBehaviour
             {
                 GameManager.currentHp = 100f;
             }
-            GameManager.PlaySound("EAT");
             InactivateItem();
         }
 
@@ -104,7 +104,8 @@ public class ItemController : MonoBehaviour
             //Increase hp
             if(itemType == 1)
             {
-                if(GameManager.currentHp <= 95f)
+                GameManager.PlaySound("GETITEM");
+                if (GameManager.currentHp <= 95f)
                 {
                     GameManager.currentHp += 5f;
                 }
@@ -112,7 +113,6 @@ public class ItemController : MonoBehaviour
                 {
                     GameManager.currentHp = 100f;
                 }
-                GameManager.PlaySound("EAT");
                 InactivateItem();
             }
             //Decrease hp
@@ -125,9 +125,10 @@ public class ItemController : MonoBehaviour
             //Enter sea mode
             if(itemType == 3)
             {
+                GameManager.PlaySound("GETITEM");
                 GameManager.isSeaMode = true;
                 GameManager.objSea.SetActive(true);
-                GameManager.PlaySound("EAT");
+                GameManager.PlaySound("SEAMODE");
                 InactivateItem();
             }
             //Increase hp
@@ -147,8 +148,9 @@ public class ItemController : MonoBehaviour
             //Enter car mode
             if(itemType == 5)
             {
+                GameManager.PlaySound("GETITEM");
                 GameManager.isCarMode = true;
-                GameManager.PlaySound("EAT");
+                GameManager.PlaySound("CARMODE");
                 InactivateItem();
             }
         }

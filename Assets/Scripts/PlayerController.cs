@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     //For sea mode
     private int swimSpeed;
+    private bool isStartCarSfx;
     private Vector3 initialPosition;
     private JoyStickController JoyStickController;
     public bool isEnterSeaMode;
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
         jumpCount = 0;
         swimSpeed = 11;
         isEnterSeaMode = false;
+        isStartCarSfx = false;
         initialPosition = transform.position;
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
         animatorPlayer = gameObject.GetComponent<Animator>();
@@ -135,6 +137,11 @@ public class PlayerController : MonoBehaviour
         {
             animatorPlayer.SetBool("isCar", true);
             objCarMode.SetActive(true);
+            if (!isStartCarSfx)
+            {
+                GameManager.CarModeAudioSource.Play();
+                isStartCarSfx = true;
+            }
         }
 
         //Player exits car mode
@@ -143,6 +150,7 @@ public class PlayerController : MonoBehaviour
             objCarMode.SetActive(false);
             animatorPlayer.SetBool("isCar", false);
             GameManager.isExitCarMode = false;
+            isStartCarSfx = false;
         }
 
         //When Player enters the sea
