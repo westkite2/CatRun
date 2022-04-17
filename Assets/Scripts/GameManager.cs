@@ -33,14 +33,18 @@ public class GameManager : MonoBehaviour
     private float nextHpDecreaseTime;
     private float hpDecreaseTimeGap;
     public static float maxHp = 100f;
+    private bool isShowCatShark;
     public bool isGameEnd;
     public bool isEndOfRoad;
     public bool isGameSuccess;
     public float currentHp;
+    public Image imgHpFill;
+    public GameObject objCatShark;
     public GameObject objBackRoad;
     public GameObject objSignBoard;
-    public Image imgHpFill;
+    public GameObject objMainCanvas;
     public GameObject objGameClear;
+    public GameObject objGameOver;
     public GameObject objSea;
 
     //Special modes
@@ -57,17 +61,20 @@ public class GameManager : MonoBehaviour
 
     public void ShowGameResult()
     {
+        objMainCanvas.SetActive(false);
         //Show game clear on success
         if (isGameSuccess)
-        {            
-            Debug.Log("Game Clear!");
+        {
             //PlaySound("GAMECLEAR");
+            objMainCanvas.SetActive(false);
             objGameClear.SetActive(true);
+            isShowCatShark = true;
         }
         //Show game over on fail
         else
         {
-            Debug.Log("Game Over!");
+            objMainCanvas.SetActive(false);
+            objGameOver.SetActive(true);
         }
     }
     public void GetGameResult()
@@ -218,6 +225,7 @@ public class GameManager : MonoBehaviour
         isStartCountingScroll = false;
         isExitCarMode = false;
         isIntro = true;
+        isShowCatShark = false;
         objIntro.SetActive(true);
     }
 
@@ -226,6 +234,7 @@ public class GameManager : MonoBehaviour
         objSea.SetActive(false);
         objSignBoard.SetActive(false);
         objGameClear.SetActive(false);
+        objGameOver.SetActive(false);
         sfxAudioSource = GetComponent<AudioSource>();
         bgmAudioSource = mainCamera.GetComponent<AudioSource>();
         bgmSeaAudioSource = objSea.GetComponent<AudioSource>();
@@ -271,7 +280,7 @@ public class GameManager : MonoBehaviour
             if (scriptBackgroundController.scrollCount == 49)
             {
                 objSignBoard.SetActive(true);
-                objSignBoard.transform.position += Vector3.left * 4 * Time.deltaTime;
+                objSignBoard.transform.position += Vector3.left * 6 * Time.deltaTime;
             }
 
             //End game if player walked enough distance
@@ -299,6 +308,11 @@ public class GameManager : MonoBehaviour
                 }
 
             }
+        }
+
+        if (isShowCatShark)
+        {
+            objCatShark.transform.Translate(-0.01f, 0, 0);
         }
     }
 
@@ -331,8 +345,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AdminChangeCurrentScore()
-    {
-        //Admin option
-    }
+    
 }

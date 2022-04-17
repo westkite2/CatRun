@@ -13,8 +13,11 @@ public class FoodController : MonoBehaviour
     private Sprite[] spriteListFood;
     private SpriteRenderer spriteRendererFood;
     private SpriteRenderer spriteRendererExplosion;
+    private SpriteRenderer spriteRendererComplete;
     private Animator animatorExplosion;
+    private Animator animatorComplete;
     public GameObject objExplosion;
+    public GameObject objComplete;
     public GameManager GameManager;
 
     private void InitSprite(string Address)
@@ -28,11 +31,11 @@ public class FoodController : MonoBehaviour
     {
         if (!GameManager.isCarMode)
         {
-            moveSpeed = 4;
+            moveSpeed = 6;
         }
         else
         {
-            moveSpeed = 16;
+            moveSpeed = 18;
         }
     }
 
@@ -66,10 +69,13 @@ public class FoodController : MonoBehaviour
     {
         spriteIndex = 0;
         objExplosion = gameObject.transform.GetChild(0).gameObject;
-        spriteRendererFood = gameObject.GetComponent<SpriteRenderer>();
+        objComplete = gameObject.transform.GetChild(1).gameObject;
         spriteRendererExplosion = objExplosion.GetComponent<SpriteRenderer>();
+        spriteRendererComplete = objComplete.GetComponent<SpriteRenderer>();
         animatorExplosion = objExplosion.GetComponent<Animator>();
-        
+        animatorComplete = objComplete.GetComponent<Animator>();
+        spriteRendererFood = gameObject.GetComponent<SpriteRenderer>();
+
         //Set initial sprite
         switch (gameObject.name)
         {
@@ -124,7 +130,9 @@ public class FoodController : MonoBehaviour
         spriteIndex = 0;
         spriteRendererFood.sprite = spriteListFood[0];
         spriteRendererExplosion.sprite = null;
+        spriteRendererComplete.sprite = null;
         animatorExplosion.ResetTrigger("Explode");
+        animatorComplete.ResetTrigger("Complete");
         gameObject.transform.position =
                 new Vector2(Random.Range(14.0f, 25.0f), Random.Range(-2.3f, 2.6f));
         gameObject.SetActive(false);
@@ -139,6 +147,11 @@ public class FoodController : MonoBehaviour
             GameManager.PlaySound("COOK");
             spriteRendererFood.sprite = spriteListFood[spriteIndex];
             animatorExplosion.SetTrigger("Explode");
+
+            if(spriteIndex == totalSprite)
+            {
+                animatorComplete.SetTrigger("Complete");
+            }
         }
     }
 

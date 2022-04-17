@@ -8,23 +8,30 @@ public class PlayerController : MonoBehaviour
 {
     //Summary: Control player actions - jumping and jump button, joystick, walking and exiting on game clear 
     
-    private int jumpCount;
-    private int swimSpeed;
-    private Vector3 initialPosition;
     private Rigidbody2D rigidbodyPlayer;
     private Animator animatorPlayer;
-    private Image imgJumpButton;
     private SpriteRenderer playerSpriteRenderer;
-    private JoyStickController JoyStickController;
-    public bool isEnterSeaMode;
-    public float jumpPower;
-    public GameManager GameManager;
     public GameObject objCarMode;
-    public GameObject objJoyStick;
-    public GameObject objJumpButton;
-    public GameObject objHpBottles;
+    public GameManager GameManager;
+
+    //For jumping
+    private int jumpCount;
+    private Image imgJumpButton;
+    private Animator animatorStar;
+    public float jumpPower;
     public Sprite spriteJumpButtonUp;
     public Sprite spriteJumpButtonDown;
+    public GameObject objJumpButton;
+    public GameObject objJumpStar;
+    
+
+    //For sea mode
+    private int swimSpeed;
+    private Vector3 initialPosition;
+    private JoyStickController JoyStickController;
+    public bool isEnterSeaMode;
+    public GameObject objJoyStick;
+    public GameObject objHpBottles;
 
     public void JumpButtonUp()
     {
@@ -44,10 +51,17 @@ public class PlayerController : MonoBehaviour
         if (jumpCount < 2)
         {
             jumpCount += 1;
+            //Normal mode jump animation
             if (!GameManager.isCarMode)
             {
                 animatorPlayer.SetBool("isJump", true);
+                //Jump VFX
+                if (jumpCount == 1)
+                {
+                    animatorStar.SetTrigger("isJump");
+                }
             }
+            //Car mode jump animation
             else
             {
                 animatorPlayer.SetBool("isCarJump", true);
@@ -76,8 +90,9 @@ public class PlayerController : MonoBehaviour
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
         animatorPlayer = gameObject.GetComponent<Animator>();
         imgJumpButton = objJumpButton.GetComponent<Image>();
-        playerSpriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         JoyStickController = objJoyStick.transform.GetChild(0).GetComponent<JoyStickController>();
+        animatorStar = objJumpStar.GetComponent<Animator>();
     }
 
     private void Start()
@@ -198,11 +213,11 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Exit game when player reach signboard
+        //Get result when player reach signboard
         if(collision.gameObject.name == "Signboard")
         {
-            this.gameObject.SetActive(false);
             GameManager.GetGameResult();
+            gameObject.SetActive(false);
         }
         
         //Return to city mode from sea mode if touch ladder

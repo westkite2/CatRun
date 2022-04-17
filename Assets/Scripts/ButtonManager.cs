@@ -55,5 +55,11 @@ public class ButtonManager : MonoBehaviour
         objPauseWindow.SetActive(false);
         Time.timeScale = 1f;
     }
+    public void OnClickRetryButton()
+    {
+        audioSource.PlayOneShot(sfxButtonClick);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
