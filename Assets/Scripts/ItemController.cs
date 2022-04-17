@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
 
     private string itemName;
     private int itemType;
+    private int itemSpeed;
     public GameManager GameManager;
 
     private void Awake()
@@ -42,7 +43,23 @@ public class ItemController : MonoBehaviour
         //Item moves toward the player
         if(itemType != 4)
         {
-            transform.position = new Vector2(transform.position.x - 4f * Time.deltaTime, transform.position.y);
+            if (!GameManager.isCarMode)
+            {
+                if(itemType == 1 || itemType == 2)
+                {
+                    itemSpeed = 6;
+                }
+                else
+                {
+                    itemSpeed = 8;
+                }
+
+            }
+            else
+            {
+                itemSpeed = 18;
+            }
+            transform.position = new Vector2(transform.position.x - itemSpeed * Time.deltaTime, transform.position.y);
         }
     }
 
@@ -132,7 +149,7 @@ public class ItemController : MonoBehaviour
             {
                 GameManager.isCarMode = true;
                 GameManager.PlaySound("EAT");
-                gameObject.SetActive(false);
+                InactivateItem();
             }
         }
         //If not eaten and reach end of screen, inactivate item

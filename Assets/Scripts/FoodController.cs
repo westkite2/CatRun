@@ -31,7 +31,7 @@ public class FoodController : MonoBehaviour
     {
         if (!GameManager.isCarMode)
         {
-            moveSpeed = 6;
+            moveSpeed = 9;
         }
         else
         {

@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         jumpCount = 0;
-        swimSpeed = 8;
+        swimSpeed = 11;
         isEnterSeaMode = false;
         initialPosition = transform.position;
         rigidbodyPlayer = gameObject.GetComponent<Rigidbody2D>();
@@ -130,6 +130,21 @@ public class PlayerController : MonoBehaviour
             Walk();
         }
 
+        //Player enters car mode
+        if (GameManager.isCarMode)
+        {
+            animatorPlayer.SetBool("isCar", true);
+            objCarMode.SetActive(true);
+        }
+
+        //Player exits car mode
+        if (GameManager.isExitCarMode)
+        {
+            objCarMode.SetActive(false);
+            animatorPlayer.SetBool("isCar", false);
+            GameManager.isExitCarMode = false;
+        }
+
         //When Player enters the sea
         if (GameManager.isSeaMode && !isEnterSeaMode)
         {
@@ -153,19 +168,6 @@ public class PlayerController : MonoBehaviour
 
             GameManager.isEnterSeaMode = true;
             isEnterSeaMode = true;
-        }
-        //Player enters car mode
-        if (GameManager.isCarMode)
-        {
-            animatorPlayer.SetBool("isCar", true);
-            objCarMode.SetActive(true);
-        }
-        //Player exits car mode
-        if (GameManager.isExitCarMode)
-        {
-            objCarMode.SetActive(false);
-            animatorPlayer.SetBool("isCar", false);
-            GameManager.isExitCarMode = false;
         }
     }
     private void SeaModeMovement()
