@@ -6,35 +6,33 @@ public class FoodManager : MonoBehaviour
 {
     //Summary: Create food objects in advance (object pooling), clear them when game ends
 
-    /*SUSHI
     private GameObject[] objSalmonList;
     private GameObject[] objShrimpList;
-    private GameObject[] objTunaList;*/
+    private GameObject[] objTunaList;
     private GameObject[] objEggList;
-    //private GameObject[] objFishEggList;
-    
+    private GameObject[] objFishEggList;
+
+    private BackgroundController scriptBackgroundController;
+    public GameObject objBackRoad;
     public GameManager GameManager;
 
-    /*SUSHI
     public GameObject objSalmon;
     public GameObject objShrimp;
-    public GameObject objTuna; */
+    public GameObject objTuna;
     public GameObject objEgg;
-    //public GameObject objFishEgg;
+    public GameObject objFishEgg;
     
-    /*SUSHI
     private int numSalmon = 8;
     private int numShrimp = 8;
-    private int numTuna = 8;*/
+    private int numTuna = 8;
     private int numEgg = 8;
-    //private int numFishEgg = 8;
+    private int numFishEgg = 8;
     
-    /*SUSHI
     private int idxSalmon = 0;
     private int idxShrimp = 0;
-    private int idxTuna = 0;*/
+    private int idxTuna = 0;
     private int idxEgg = 0;
-    //private int idxFishEgg = 0;
+    private int idxFishEgg = 0;
 
     private void CreateObjects(GameObject objFood, ref GameObject[] objFoodList, int num)
     {
@@ -53,11 +51,81 @@ public class FoodManager : MonoBehaviour
     IEnumerator ActivateFood()
     {
         //Activate food objects periodically while game playing
-        yield return new WaitForSeconds(1f);
-        if (!GameManager.isSeaMode)
+        
+        //Normal mode
+        if (!GameManager.isCarMode)
         {
-            objEggList[idxEgg++].SetActive(true);
-            if (idxEgg == numEgg) idxEgg = 0;
+            if (scriptBackgroundController.scrollCount <= 5){
+                yield return new WaitForSeconds(1f);
+                if (!GameManager.isSeaMode)
+                {
+                    objTunaList[idxTuna++].SetActive(true);
+                    if (idxTuna == numTuna) idxTuna = 0;
+                    
+                }
+
+                yield return new WaitForSeconds(1f);
+                if (!GameManager.isSeaMode)
+                {
+                    objEggList[idxEgg++].SetActive(true);
+                    if (idxEgg == numEgg) idxEgg = 0;
+                }
+
+                yield return new WaitForSeconds(1f);
+                if (!GameManager.isSeaMode)
+                {
+                    objShrimpList[idxShrimp++].SetActive(true);
+                    if (idxShrimp == numShrimp) idxShrimp = 0;
+                }
+
+            }
+            if (scriptBackgroundController.scrollCount > 5)
+            {
+                yield return new WaitForSeconds(1f);
+                if (!GameManager.isSeaMode)
+                {
+                    objEggList[idxEgg++].SetActive(true);
+                    if (idxEgg == numEgg) idxEgg = 0;
+
+                    objTunaList[idxTuna++].SetActive(true);
+                    if (idxTuna == numTuna) idxTuna = 0;
+
+                    objFishEggList[idxFishEgg++].SetActive(true);
+                    if (idxFishEgg == numFishEgg) idxFishEgg = 0;
+
+                }
+                yield return new WaitForSeconds(1f);
+                if (!GameManager.isSeaMode)
+                {
+                    objSalmonList[idxSalmon++].SetActive(true);
+                    if (idxSalmon == numSalmon) idxSalmon = 0;
+
+                    objShrimpList[idxShrimp++].SetActive(true);
+                    if (idxShrimp == numShrimp) idxShrimp = 0;
+                }
+            }
+        }
+        //Car mode
+        else
+        {
+            yield return new WaitForSeconds(1f);
+            if (!GameManager.isSeaMode)
+            {
+                objSalmonList[idxSalmon++].SetActive(true);
+                if (idxSalmon == numSalmon) idxSalmon = 0;
+
+                objShrimpList[idxShrimp++].SetActive(true);
+                if (idxShrimp == numShrimp) idxShrimp = 0;
+
+                objTunaList[idxTuna++].SetActive(true);
+                if (idxTuna == numTuna) idxTuna = 0;
+
+                objEggList[idxEgg++].SetActive(true);
+                if (idxEgg == numEgg) idxEgg = 0;
+
+                objFishEggList[idxFishEgg++].SetActive(true);
+                if (idxFishEgg == numFishEgg) idxFishEgg = 0;
+            }
         }
 
         StartCoroutine("ActivateFood");
@@ -74,16 +142,16 @@ public class FoodManager : MonoBehaviour
     private void Awake()
     {
         //Create food objects
-        /*SUSHI
         CreateObjects(objSalmon, ref objSalmonList, numSalmon);
         CreateObjects(objShrimp, ref objShrimpList, numShrimp);
-        CreateObjects(objTuna, ref objTunaList, numTuna);*/
+        CreateObjects(objTuna, ref objTunaList, numTuna);
         CreateObjects(objEgg, ref objEggList, numEgg);
-        //CreateObjects(objFishEgg, ref objFishEggList, numFishEgg);
+        CreateObjects(objFishEgg, ref objFishEggList, numFishEgg);
     }
 
     private void Start()
     {
+        scriptBackgroundController = objBackRoad.GetComponent<BackgroundController>();
         Physics2D.IgnoreLayerCollision(3, 3);
         StartCoroutine("ActivateFood");
     }
@@ -94,12 +162,11 @@ public class FoodManager : MonoBehaviour
         if (GameManager.isGameEnd)
         {
             StopCoroutine("ActivateFood");
-            /*SUSHI
             InactivateFood(ref objSalmonList, numSalmon);
             InactivateFood(ref objShrimpList, numShrimp);
-            InactivateFood(ref objTunaList, numTuna);*/
+            InactivateFood(ref objTunaList, numTuna);
             InactivateFood(ref objEggList, numEgg);
-            //InactivateFood(ref objFishEggList, numFishEgg);
+            InactivateFood(ref objFishEggList, numFishEgg);
         }
     }
 }

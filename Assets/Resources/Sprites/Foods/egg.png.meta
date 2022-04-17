@@ -3,14 +3,14 @@ guid: 4d7795b066e59aa499a5cd068a0b90fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9102810206188791001
-    second: food_egg_0
+      213: -4072622106568590741
+    second: egg_0
   - first:
-      213: -5667824335533819717
-    second: food_egg_1
+      213: -5012961933758602109
+    second: egg_1
   - first:
-      213: 3392295304875964845
-    second: food_egg_2
+      213: 4488566306593746544
+    second: egg_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,6 +97,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -112,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: food_egg_0
+      name: egg_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72b1152a8525ca180800000000000000
-      internalID: -9102810206188791001
+      spriteID: b6a739195c32b77c0800000000000000
+      internalID: -4072622106568590741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food_egg_1
+      name: egg_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 1920
         y: 0
-        width: 200
-        height: 200
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb83137dbc7d751b0800000000000000
-      internalID: -5667824335533819717
+      spriteID: 38463c95ea16e6ab0800000000000000
+      internalID: -5012961933758602109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: food_egg_2
+      name: egg_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 3840
         y: 0
-        width: 200
-        height: 200
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da97b5c4b9ad31f20800000000000000
-      internalID: 3392295304875964845
+      spriteID: 07eae4f36479a4e30800000000000000
+      internalID: 4488566306593746544
       vertices: []
       indices: 
       edges: []

@@ -31,7 +31,7 @@ public class FoodController : MonoBehaviour
     {
         if (!GameManager.isCarMode)
         {
-            moveSpeed = 9;
+            moveSpeed = 7;
         }
         else
         {
@@ -79,33 +79,31 @@ public class FoodController : MonoBehaviour
         //Set initial sprite
         switch (gameObject.name)
         {
-            /*SUSHI
             case "Salmon(Clone)":
                 foodType = 0;
                 InitSprite("Sprites/Foods/salmon");
-                totalSprite = ?;
+                totalSprite = 2;
                 break;
             case "Shrimp(Clone)":
                 foodType = 1;
                 InitSprite("Sprites/Foods/shrimp");
-                totalSprite = ?;
+                totalSprite = 2;
                 break;
             case "Tuna(Clone)":
                 foodType = 2;
                 InitSprite("Sprites/Foods/tuna");
-                totalSprite = ?;
-                break;*/
+                totalSprite = 2;
+                break;
             case "Egg(Clone)":
                 foodType = 3;
                 InitSprite("Sprites/Foods/egg");
                 totalSprite = 2;
                 break;
-            /*case "FishEgg(Clone)":
+            case "FishEgg(Clone)":
                 foodType = 4;
                 InitSprite("Sprites/Foods/fishegg");
-                totalSprite = ?;
+                totalSprite = 1;
                 break;
-             */
         }
     }
     

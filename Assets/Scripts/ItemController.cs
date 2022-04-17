@@ -47,11 +47,11 @@ public class ItemController : MonoBehaviour
             {
                 if(itemType == 1 || itemType == 2)
                 {
-                    itemSpeed = 8;
+                    itemSpeed = 7;
                 }
                 else
                 {
-                    itemSpeed = 7;
+                    itemSpeed = 8;
                 }
 
             }

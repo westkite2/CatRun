@@ -6,12 +6,10 @@ public class ItemManager : MonoBehaviour
 {
     //Summary: Create and manage special items
 
-    private int scrollCount;
     private BackgroundController scriptBackgroundController;
     public GameManager GameManager;
     public GameObject objHpHeart;
-    public GameObject objBadFood1;
-    public GameObject objBadFood2;
+    public GameObject objBadFood;
     public GameObject objSeaItem;
     public GameObject objCarItem;
     public GameObject objBackRoad;
@@ -58,13 +56,9 @@ public class ItemManager : MonoBehaviour
             yield return new WaitForSeconds(3f);
             if (!GameManager.isSeaMode)
             {
-                if (!objBadFood1.activeSelf)
+                if (!objBadFood.activeSelf)
                 {
-                    objBadFood1.SetActive(true);
-                }
-                if (!objBadFood2.activeSelf)
-                {
-                    objBadFood2.SetActive(true);
+                    objBadFood.SetActive(true);
                 }
             }
             if ((scriptBackgroundController.scrollCount % 4 == 0) && (scriptBackgroundController.scrollCount <= 36))
@@ -107,13 +101,11 @@ public class ItemManager : MonoBehaviour
     private void Awake()
     {
         objHpHeart.SetActive(false);
-        objBadFood1.SetActive(false);
-        objBadFood2.SetActive(false);
+        objBadFood.SetActive(false);
         objSeaItem.SetActive(false);
         objCarItem.SetActive(false);
         InitializePosition(objHpHeart);
-        InitializePosition(objBadFood1);
-        InitializePosition(objBadFood2);
+        InitializePosition(objBadFood);
         InitializePosition(objSeaItem);
         InitializePosition(objCarItem);
     }
@@ -136,8 +128,7 @@ public class ItemManager : MonoBehaviour
         {
             StopCoroutine("ActivateItem");
             InactivateItem(objHpHeart);
-            InactivateItem(objBadFood1);
-            InactivateItem(objBadFood2);
+            InactivateItem(objBadFood);
             InactivateItem(objSeaItem);
             InactivateItem(objCarItem);
         }

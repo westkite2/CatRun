@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public bool isEnterSeaMode;
     public GameObject objJoyStick;
     public GameObject objHpBottles;
+    private RigidbodyConstraints2D originalConstraints;
 
     public void JumpButtonUp()
     {
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //Car mode jump animation
-            else
+            else if(GameManager.isCarMode)
             {
                 animatorPlayer.SetBool("isCarJump", true);
             }
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         playerSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         JoyStickController = objJoyStick.transform.GetChild(0).GetComponent<JoyStickController>();
         animatorStar = objJumpStar.GetComponent<Animator>();
+        originalConstraints = rigidbodyPlayer.constraints;
     }
 
     private void Start()
@@ -164,6 +166,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(8f, -20f, 0f);
             rigidbodyPlayer.gravityScale = 0f;
             rigidbodyPlayer.velocity = new Vector3(1, 0, 0);
+            rigidbodyPlayer.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 
             //Change animation
             animatorPlayer.SetBool("isSwim", true);
@@ -233,6 +236,7 @@ public class PlayerController : MonoBehaviour
         //Return to city mode from sea mode if touch ladder
         if(collision.gameObject.name == "Ladder")
         {
+            rigidbodyPlayer.constraints = originalConstraints;
             rigidbodyPlayer.velocity = Vector3.zero;            
             GameManager.isSeaMode = false;
             GameManager.isExitSeaMode = true;
