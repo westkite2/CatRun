@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.name == "Signboard")
         {
             GameManager.GetGameResult();
-            gameObject.SetActive(false);
+            
         }
         
         //Return to city mode from sea mode if touch ladder

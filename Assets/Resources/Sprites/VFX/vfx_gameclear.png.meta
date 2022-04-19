@@ -1,142 +1,142 @@
 fileFormatVersion: 2
-guid: 5f1ef42ecbf0c3e48ade4954289bbbf7
+guid: 81becaaba85e9454d8e56729796ceb5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6997471048262343387
-    second: vfx_gameClear_0
+      213: -5947202470828987291
+    second: gameClear_0
   - first:
-      213: 4356617839936349934
-    second: vfx_gameClear_1
+      213: -4165025790682556470
+    second: gameClear_1
   - first:
-      213: 6088395252321753923
-    second: vfx_gameClear_2
+      213: -4027427114014270868
+    second: gameClear_2
   - first:
-      213: 2159022007208531037
-    second: vfx_gameClear_3
+      213: -9168559582962330875
+    second: gameClear_3
   - first:
-      213: 1670981408781444264
-    second: vfx_gameClear_4
+      213: -495735313640154006
+    second: gameClear_4
   - first:
-      213: -785081094403983849
-    second: vfx_gameClear_5
+      213: -7597158961863321296
+    second: gameClear_5
   - first:
-      213: 2909460176336104517
-    second: vfx_gameClear_6
+      213: 3745261946528501234
+    second: gameClear_6
   - first:
-      213: -8399647091219075998
-    second: vfx_gameClear_7
+      213: -6453419375560108319
+    second: gameClear_7
   - first:
-      213: -8355146292929297783
-    second: vfx_gameClear_8
+      213: 5050909416158577683
+    second: gameClear_8
   - first:
-      213: 7130026695508308782
-    second: vfx_gameClear_9
+      213: -3312530373903510942
+    second: gameClear_9
   - first:
-      213: 3643534624694174141
-    second: vfx_gameClear_10
+      213: -8144776956225497655
+    second: gameClear_10
   - first:
-      213: 7210260596843138271
-    second: vfx_gameClear_11
+      213: 573788981783769210
+    second: gameClear_11
   - first:
-      213: -4240107372799545311
-    second: vfx_gameClear_12
+      213: -1526158184390677398
+    second: gameClear_12
   - first:
-      213: -9037131730847922318
-    second: vfx_gameClear_13
+      213: 7720345057805842275
+    second: gameClear_13
   - first:
-      213: 686350960202026255
-    second: vfx_gameClear_14
+      213: 3744546259215010819
+    second: gameClear_14
   - first:
-      213: 2112026624734178046
-    second: vfx_gameClear_15
+      213: -6727371677801625797
+    second: gameClear_15
   - first:
-      213: -2233353917911750229
-    second: vfx_gameClear_16
+      213: 3355250880073116326
+    second: gameClear_16
   - first:
-      213: 6202556168638996227
-    second: vfx_gameClear_17
+      213: -7329110519574344427
+    second: gameClear_17
   - first:
-      213: 6108485488469543339
-    second: vfx_gameClear_18
+      213: -7961574822056348537
+    second: gameClear_18
   - first:
-      213: 7066363958275737500
-    second: vfx_gameClear_19
+      213: 4269765225383511968
+    second: gameClear_19
   - first:
-      213: -8115125971723478951
-    second: vfx_gameClear_20
+      213: -4180415614169666724
+    second: gameClear_20
   - first:
-      213: -6149253664755151571
-    second: vfx_gameClear_21
+      213: 1047571550849417101
+    second: gameClear_21
   - first:
-      213: 3462358064250816176
-    second: vfx_gameClear_22
+      213: 1236335492893453856
+    second: gameClear_22
   - first:
-      213: -4077689993663161988
-    second: vfx_gameClear_23
+      213: 1221681069279415797
+    second: gameClear_23
   - first:
-      213: 6313866551485399579
-    second: vfx_gameClear_24
+      213: 7918659602274838844
+    second: gameClear_24
   - first:
-      213: 7090344071551085574
-    second: vfx_gameClear_25
+      213: -8146484929967601573
+    second: gameClear_25
   - first:
-      213: 4670887478967896826
-    second: vfx_gameClear_26
+      213: -6574848291528474133
+    second: gameClear_26
   - first:
-      213: -7257259622205686954
-    second: vfx_gameClear_27
+      213: 3300082332684548101
+    second: gameClear_27
   - first:
-      213: 617185222587077417
-    second: vfx_gameClear_28
+      213: 6846784224036820291
+    second: gameClear_28
   - first:
-      213: 4857029842817807998
-    second: vfx_gameClear_29
+      213: 8087174399418220743
+    second: gameClear_29
   - first:
-      213: 5681687237798003780
-    second: vfx_gameClear_30
+      213: 4983226724278833595
+    second: gameClear_30
   - first:
-      213: 3182013928431999375
-    second: vfx_gameClear_31
+      213: 3241915831948462761
+    second: gameClear_31
   - first:
-      213: -7087988713379929272
-    second: vfx_gameClear_32
+      213: 1221078393506590295
+    second: gameClear_32
   - first:
-      213: 8462303433354979467
-    second: vfx_gameClear_33
+      213: -6663474728617643913
+    second: gameClear_33
   - first:
-      213: 5193592834897109450
-    second: vfx_gameClear_34
+      213: 4756353872882905270
+    second: gameClear_34
   - first:
-      213: -6404820211070970650
-    second: vfx_gameClear_35
+      213: -6394499534938698424
+    second: gameClear_35
   - first:
-      213: -977658708074577007
-    second: vfx_gameClear_36
+      213: -5915940461599729791
+    second: gameClear_36
   - first:
-      213: 654044700997981851
-    second: vfx_gameClear_37
+      213: 2877944712602045246
+    second: gameClear_37
   - first:
-      213: 2086036634595130498
-    second: vfx_gameClear_38
+      213: -8902512581780214846
+    second: gameClear_38
   - first:
-      213: -4381888350933910270
-    second: vfx_gameClear_39
+      213: -3200487380899452830
+    second: gameClear_39
   - first:
-      213: 6354597201456517976
-    second: vfx_gameClear_40
+      213: -4791607079782749293
+    second: gameClear_40
   - first:
-      213: -3046764178125073057
-    second: vfx_gameClear_41
+      213: 7066272852732356450
+    second: gameClear_41
   - first:
-      213: -1254475790081029463
-    second: vfx_gameClear_42
+      213: -2104561007842973750
+    second: gameClear_42
   - first:
-      213: -2623198474609533931
-    second: vfx_gameClear_43
+      213: 5384713244019828201
+    second: gameClear_43
   - first:
-      213: 1498491157533740618
-    second: vfx_gameClear_44
+      213: -6282903087000740317
+    second: gameClear_44
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -203,7 +203,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -215,7 +215,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -227,7 +227,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -239,7 +239,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -250,13 +250,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vfx_gameClear_0
+      name: gameClear_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2500
-        width: 1111.1111
-        height: 625
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdad1cd18d20c1160800000000000000
-      internalID: 6997471048262343387
+      spriteID: 56ca9e6ccda477da0800000000000000
+      internalID: -5947202470828987291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_1
+      name: gameClear_1
       rect:
         serializedVersion: 2
-        x: 1111
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 960
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,20 +285,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee62983d7d0d57c30800000000000000
-      internalID: 4356617839936349934
+      spriteID: ac796025c1bd236c0800000000000000
+      internalID: -4165025790682556470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_2
+      name: gameClear_2
       rect:
         serializedVersion: 2
-        x: 2222
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 1920
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,20 +306,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b10da69335e7450800000000000000
-      internalID: 6088395252321753923
+      spriteID: c6a1766c064bb18c0800000000000000
+      internalID: -4027427114014270868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_3
+      name: gameClear_3
       rect:
         serializedVersion: 2
-        x: 3333
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 2880
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,20 +327,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d545ae9931366fd10800000000000000
-      internalID: 2159022007208531037
+      spriteID: 503d68be2abb2c080800000000000000
+      internalID: -9168559582962330875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_4
+      name: gameClear_4
       rect:
         serializedVersion: 2
-        x: 4444
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 3840
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,20 +348,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a423b0fcb4803710800000000000000
-      internalID: 1670981408781444264
+      spriteID: a6c9cd7db5bce19f0800000000000000
+      internalID: -495735313640154006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_5
+      name: gameClear_5
       rect:
         serializedVersion: 2
-        x: 5555
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 4800
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,20 +369,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 716fc2877e4da15f0800000000000000
-      internalID: -785081094403983849
+      spriteID: 03916f7fc28719690800000000000000
+      internalID: -7597158961863321296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_6
+      name: gameClear_6
       rect:
         serializedVersion: 2
-        x: 6666
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 5760
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,20 +390,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54ca8aa8d9a706820800000000000000
-      internalID: 2909460176336104517
+      spriteID: 2fd8e99a5e7d9f330800000000000000
+      internalID: 3745261946528501234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_7
+      name: gameClear_7
       rect:
         serializedVersion: 2
-        x: 7777
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 6720
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -411,20 +411,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26c6e3949757e6b80800000000000000
-      internalID: -8399647091219075998
+      spriteID: 1e6dd150549d076a0800000000000000
+      internalID: -6453419375560108319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_8
+      name: gameClear_8
       rect:
         serializedVersion: 2
-        x: 8888
-        y: 2500
-        width: 1111.1111
-        height: 625
+        x: 7680
+        y: 2160
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -432,209 +432,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 982078bc6be8c0c80800000000000000
-      internalID: -8355146292929297783
+      spriteID: 314cec66a5f681640800000000000000
+      internalID: 5050909416158577683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2333d8c081f2f260800000000000000
-      internalID: 7130026695508308782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_10
-      rect:
-        serializedVersion: 2
-        x: 1111
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db18bb7df6f609230800000000000000
-      internalID: 3643534624694174141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_11
-      rect:
-        serializedVersion: 2
-        x: 2222
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fdcc4dcafcdff0460800000000000000
-      internalID: 7210260596843138271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_12
-      rect:
-        serializedVersion: 2
-        x: 3333
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 120b4ca3fcc1825c0800000000000000
-      internalID: -4240107372799545311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_13
-      rect:
-        serializedVersion: 2
-        x: 4444
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27706625298a59280800000000000000
-      internalID: -9037131730847922318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_14
-      rect:
-        serializedVersion: 2
-        x: 5555
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0d0716df88668900800000000000000
-      internalID: 686350960202026255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_15
-      rect:
-        serializedVersion: 2
-        x: 6666
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: efaa273760d6f4d10800000000000000
-      internalID: 2112026624734178046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_16
-      rect:
-        serializedVersion: 2
-        x: 7777
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba9a429c1788101e0800000000000000
-      internalID: -2233353917911750229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_17
-      rect:
-        serializedVersion: 2
-        x: 8888
-        y: 1875
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30f922b09f7e31650800000000000000
-      internalID: 6202556168638996227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_18
+      name: gameClear_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 1250
-        width: 1111.1111
-        height: 625
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -642,20 +453,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba90bd70033b5c450800000000000000
-      internalID: 6108485488469543339
+      spriteID: 2621acbec278702d0800000000000000
+      internalID: -3312530373903510942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_19
+      name: gameClear_10
       rect:
         serializedVersion: 2
-        x: 1111
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 960
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -663,20 +474,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9706a2b494c01260800000000000000
-      internalID: 7066363958275737500
+      spriteID: 9c5546dd280f7fe80800000000000000
+      internalID: -8144776956225497655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_20
+      name: gameClear_11
       rect:
         serializedVersion: 2
-        x: 2222
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 1920
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -684,20 +495,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95810ebace7416f80800000000000000
-      internalID: -8115125971723478951
+      spriteID: a703143f90286f700800000000000000
+      internalID: 573788981783769210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_21
+      name: gameClear_12
       rect:
         serializedVersion: 2
-        x: 3333
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 2880
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -705,20 +516,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2d008e3f5679aaa0800000000000000
-      internalID: -6149253664755151571
+      spriteID: a6ca65c973ff1dae0800000000000000
+      internalID: -1526158184390677398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_22
+      name: gameClear_13
       rect:
         serializedVersion: 2
-        x: 4444
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 3840
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -726,20 +537,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b601e8a054cc0030800000000000000
-      internalID: 3462358064250816176
+      spriteID: 367b5f90dec242b60800000000000000
+      internalID: 7720345057805842275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_23
+      name: gameClear_14
       rect:
         serializedVersion: 2
-        x: 5555
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 4800
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -747,20 +558,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c79da872e822967c0800000000000000
-      internalID: -4077689993663161988
+      spriteID: 30c4789bbfc47f330800000000000000
+      internalID: 3744546259215010819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_24
+      name: gameClear_15
       rect:
         serializedVersion: 2
-        x: 6666
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 5760
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -768,20 +579,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1202802d2c5f9750800000000000000
-      internalID: 6313866551485399579
+      spriteID: b374c982a1393a2a0800000000000000
+      internalID: -6727371677801625797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_25
+      name: gameClear_16
       rect:
         serializedVersion: 2
-        x: 7777
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 6720
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -789,20 +600,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c6918ed56f56260800000000000000
-      internalID: 7090344071551085574
+      spriteID: 6aa231706ee309e20800000000000000
+      internalID: 3355250880073116326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_26
+      name: gameClear_17
       rect:
         serializedVersion: 2
-        x: 8888
-        y: 1250
-        width: 1111.1111
-        height: 625
+        x: 7680
+        y: 1620
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -810,209 +621,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa83b92a6352d040800000000000000
-      internalID: 4670887478967896826
+      spriteID: 51d413150d4c94a90800000000000000
+      internalID: -7329110519574344427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_27
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65bf4aff2d8094b90800000000000000
-      internalID: -7257259622205686954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_28
-      rect:
-        serializedVersion: 2
-        x: 1111
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9235ce0a0bea09800800000000000000
-      internalID: 617185222587077417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_29
-      rect:
-        serializedVersion: 2
-        x: 2222
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7670ac88e2a76340800000000000000
-      internalID: 4857029842817807998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_30
-      rect:
-        serializedVersion: 2
-        x: 3333
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44402dd907869de40800000000000000
-      internalID: 5681687237798003780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_31
-      rect:
-        serializedVersion: 2
-        x: 4444
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f89d8821fc8c82c20800000000000000
-      internalID: 3182013928431999375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_32
-      rect:
-        serializedVersion: 2
-        x: 5555
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 843e207a1d762ad90800000000000000
-      internalID: -7087988713379929272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_33
-      rect:
-        serializedVersion: 2
-        x: 6666
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8821be2324207570800000000000000
-      internalID: 8462303433354979467
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_34
-      rect:
-        serializedVersion: 2
-        x: 7777
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac16e00aa29531840800000000000000
-      internalID: 5193592834897109450
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_35
-      rect:
-        serializedVersion: 2
-        x: 8888
-        y: 625
-        width: 1111.1111
-        height: 625
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e45fd4c3f18d17a0800000000000000
-      internalID: -6404820211070970650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_gameClear_36
+      name: gameClear_18
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1111.1111
-        height: 625
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1020,20 +642,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 193c5a9b598ae62f0800000000000000
-      internalID: -977658708074577007
+      spriteID: 78433aea1edc28190800000000000000
+      internalID: -7961574822056348537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_37
+      name: gameClear_19
       rect:
         serializedVersion: 2
-        x: 1111
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 960
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1041,20 +663,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b961636b032a31900800000000000000
-      internalID: 654044700997981851
+      spriteID: 0a7cc4da9d0414b30800000000000000
+      internalID: 4269765225383511968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_38
+      name: gameClear_20
       rect:
         serializedVersion: 2
-        x: 2222
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 1920
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1062,20 +684,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28c7e71544713fc10800000000000000
-      internalID: 2086036634595130498
+      spriteID: c5babefc52e2cf5c0800000000000000
+      internalID: -4180415614169666724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_39
+      name: gameClear_21
       rect:
         serializedVersion: 2
-        x: 3333
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 2880
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1083,20 +705,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20d7925d2c76033c0800000000000000
-      internalID: -4381888350933910270
+      spriteID: d8f3f2576c8b98e00800000000000000
+      internalID: 1047571550849417101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_40
+      name: gameClear_22
       rect:
         serializedVersion: 2
-        x: 4444
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 3840
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1104,20 +726,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 853d1839c70103850800000000000000
-      internalID: 6354597201456517976
+      spriteID: 02e2f159498582110800000000000000
+      internalID: 1236335492893453856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_41
+      name: gameClear_23
       rect:
         serializedVersion: 2
-        x: 5555
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 4800
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1125,20 +747,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5558785f18b7b5d0800000000000000
-      internalID: -3046764178125073057
+      spriteID: 5fd0833b57844f010800000000000000
+      internalID: 1221681069279415797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_42
+      name: gameClear_24
       rect:
         serializedVersion: 2
-        x: 6666
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 5760
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1146,20 +768,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aa84e85ae4379ee0800000000000000
-      internalID: -1254475790081029463
+      spriteID: c39e3d214fab4ed60800000000000000
+      internalID: 7918659602274838844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_43
+      name: gameClear_25
       rect:
         serializedVersion: 2
-        x: 7777
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 6720
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1167,20 +789,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51c5d89b2e6889bd0800000000000000
-      internalID: -2623198474609533931
+      spriteID: b58453d3e1fd1fe80800000000000000
+      internalID: -8146484929967601573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_gameClear_44
+      name: gameClear_26
       rect:
         serializedVersion: 2
-        x: 8888
-        y: 0
-        width: 1111.1111
-        height: 625
+        x: 7680
+        y: 1080
+        width: 960
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1188,8 +810,386 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4eccd7b4c5bbc410800000000000000
-      internalID: 1498491157533740618
+      spriteID: be18c5b505271c4a0800000000000000
+      internalID: -6574848291528474133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5087431a56f3ccd20800000000000000
+      internalID: 3300082332684548101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_28
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3459677d9f9a40f50800000000000000
+      internalID: 6846784224036820291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_29
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0c4f1c44a6b3070800000000000000
+      internalID: 8087174399418220743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_30
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb19fdfad4af72540800000000000000
+      internalID: 4983226724278833595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_31
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aac003d5499dfc20800000000000000
+      internalID: 3241915831948462761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_32
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75e6ddf445422f010800000000000000
+      internalID: 1221078393506590295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_33
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 770f3f6f9059683a0800000000000000
+      internalID: -6663474728617643913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_34
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b03d3ba5a6f10240800000000000000
+      internalID: 4756353872882905270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_35
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 540
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d049f6d8c2247a0800000000000000
+      internalID: -6394499534938698424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187dcf18e7b56eda0800000000000000
+      internalID: -5915940461599729791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_37
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bcbd5d77380f720800000000000000
+      internalID: 2877944712602045246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_38
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb6b8279fbe37480800000000000000
+      internalID: -8902512581780214846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_39
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2682e591fa59593d0800000000000000
+      internalID: -3200487380899452830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_40
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b6d4a7fbac08db0800000000000000
+      internalID: -4791607079782749293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_41
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267291988b1701260800000000000000
+      internalID: 7066272852732356450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_42
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7a16fe9e81bc2e0800000000000000
+      internalID: -2104561007842973750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_43
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5a42f7a285aba40800000000000000
+      internalID: 5384713244019828201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gameClear_44
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 0
+        width: 960
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e9d1d3ee4aec8a0800000000000000
+      internalID: -6282903087000740317
       vertices: []
       indices: 
       edges: []

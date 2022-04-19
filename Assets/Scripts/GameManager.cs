@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     public float currentHp;
     public Image imgHpFill;
     public GameObject objCatShark;
+    public GameObject objPlayer;
     public GameObject objBackRoad;
     public GameObject objSignBoard;
     public GameObject objMainCanvas;
@@ -71,9 +72,18 @@ public class GameManager : MonoBehaviour
     {
         objMainCanvas.SetActive(false);
         objSignBoard.SetActive(false);
+        objPlayer.SetActive(false);
         //Show game clear on success
         if (isGameSuccess)
         {
+            if (isSeaMode)
+            {
+                isSeaMode = false;
+            }
+            if (isCarMode)
+            {
+                isCarMode = false;
+            }
             PlaySound("GAMECLEAR");
             bgmAudioSource.Pause();
             objMainCanvas.SetActive(false);
@@ -83,6 +93,14 @@ public class GameManager : MonoBehaviour
         //Show game over on fail
         else
         {
+            if (isSeaMode)
+            {
+                isSeaMode = false;
+            }
+            if (isCarMode)
+            {
+                isCarMode = false;
+            }
             PlaySound("GAMEOVER");
             bgmAudioSource.Pause();
             objMainCanvas.SetActive(false);
@@ -95,7 +113,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                if (countFood[i] < 30)
+                if (countFood[i] < 20)
                 {
                     isGameSuccess = false;
                     break;
@@ -380,7 +398,7 @@ public class GameManager : MonoBehaviour
         scriptBackgroundController.scrollCount = 48;
         for (int i = 0; i < 5; i++)
         {
-            countFood[i] = 30;
+            countFood[i] = 20;
         }
     }
     public void AdminFail()

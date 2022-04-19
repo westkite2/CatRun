@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         isEnterSeaMode = false;
-        cameraMoveSpeed = 1f;
+        cameraMoveSpeed = 2f;
         mapSize = new Vector2(19, 10);
         center = new Vector2(8, -20);
         initialPosition = gameObject.transform.position;

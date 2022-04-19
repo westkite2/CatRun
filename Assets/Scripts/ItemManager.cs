@@ -68,7 +68,7 @@ public class ItemManager : MonoBehaviour
                     objCarItem.SetActive(true);
                 }
             }
-            if(scriptBackgroundController.scrollCount % 5 == 0)
+            if(scriptBackgroundController.scrollCount % 11 == 0)
             {
                 if (!objSeaItem.activeSelf)
                 {

@@ -12,6 +12,7 @@ public class MainSceneManager : MonoBehaviour
     private AudioSource bgmAudioSource;
     public AudioClip sfxButtonClick;
     public GameObject objSettingsWindow;
+    public GameObject objInfoWindow;
     public GameObject mainCamera;
     public Slider bgmVolumnSlider;
     public Slider sfxVolumnSlider;
@@ -30,6 +31,7 @@ public class MainSceneManager : MonoBehaviour
     private void Start()
     {
         objSettingsWindow.SetActive(false);
+        objInfoWindow.SetActive(false);
 
         bgmAudioSource = mainCamera.GetComponent<AudioSource>();
         sfxAudioSource = GetComponent<AudioSource>();
@@ -72,6 +74,13 @@ public class MainSceneManager : MonoBehaviour
     {
         sfxAudioSource.PlayOneShot(sfxButtonClick);
         objSettingsWindow.SetActive(false);
+        objInfoWindow.SetActive(false);
+    }
+    
+    public void OnClickInfoButton()
+    {
+        sfxAudioSource.PlayOneShot(sfxButtonClick);
+        objInfoWindow.SetActive(true);
     }
 
 }

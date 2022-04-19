@@ -55,60 +55,39 @@ public class FoodManager : MonoBehaviour
         //Normal mode
         if (!GameManager.isCarMode)
         {
-            if (scriptBackgroundController.scrollCount <= 5){
-                yield return new WaitForSeconds(1f);
-                if (!GameManager.isSeaMode)
-                {
-                    objTunaList[idxTuna++].SetActive(true);
-                    if (idxTuna == numTuna) idxTuna = 0;
-                    
-                }
-
-                yield return new WaitForSeconds(1f);
-                if (!GameManager.isSeaMode)
-                {
-                    objEggList[idxEgg++].SetActive(true);
-                    if (idxEgg == numEgg) idxEgg = 0;
-                }
-
-                yield return new WaitForSeconds(1f);
-                if (!GameManager.isSeaMode)
-                {
-                    objShrimpList[idxShrimp++].SetActive(true);
-                    if (idxShrimp == numShrimp) idxShrimp = 0;
-                }
-
-            }
-            if (scriptBackgroundController.scrollCount > 5)
+            yield return new WaitForSeconds(1f);
+            if (!GameManager.isSeaMode)
             {
-                yield return new WaitForSeconds(1f);
-                if (!GameManager.isSeaMode)
-                {
-                    objEggList[idxEgg++].SetActive(true);
-                    if (idxEgg == numEgg) idxEgg = 0;
+                objTunaList[idxTuna++].SetActive(true);
+                if (idxTuna == numTuna) idxTuna = 0;
 
-                    objTunaList[idxTuna++].SetActive(true);
-                    if (idxTuna == numTuna) idxTuna = 0;
+                objSalmonList[idxSalmon++].SetActive(true);
+                if (idxSalmon == numSalmon) idxSalmon = 0;
 
-                    objFishEggList[idxFishEgg++].SetActive(true);
-                    if (idxFishEgg == numFishEgg) idxFishEgg = 0;
-
-                }
-                yield return new WaitForSeconds(1f);
-                if (!GameManager.isSeaMode)
-                {
-                    objSalmonList[idxSalmon++].SetActive(true);
-                    if (idxSalmon == numSalmon) idxSalmon = 0;
-
-                    objShrimpList[idxShrimp++].SetActive(true);
-                    if (idxShrimp == numShrimp) idxShrimp = 0;
-                }
             }
+
+            yield return new WaitForSeconds(1f);
+            if (!GameManager.isSeaMode)
+            {
+                objEggList[idxEgg++].SetActive(true);
+                if (idxEgg == numEgg) idxEgg = 0;
+            }
+
+            yield return new WaitForSeconds(1f);
+            if (!GameManager.isSeaMode)
+            {
+                objShrimpList[idxShrimp++].SetActive(true);
+                if (idxShrimp == numShrimp) idxShrimp = 0;
+
+                objFishEggList[idxFishEgg++].SetActive(true);
+                if (idxFishEgg == numFishEgg) idxFishEgg = 0;
+            }
+
         }
         //Car mode
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.8f);
             if (!GameManager.isSeaMode)
             {
                 objSalmonList[idxSalmon++].SetActive(true);
